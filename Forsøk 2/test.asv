@@ -1,0 +1,6 @@
+FOYV= [1 0 3]
+FNYV = [0 0 0]
+
+a=[0,1]
+b=[FOYV(1)-FNYV(1) , FOYV(3)-FNYV(3)]
+alpha = arccos[(a(1) * b(1) + a(2) * b(2)) / (sqrt((xa2 + ya2)) * sqrt((xb2 + yb2)))]
