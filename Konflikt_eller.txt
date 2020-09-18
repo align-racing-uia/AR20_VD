@@ -1,5 +1,12 @@
 Dette er en tekst
+ny linje Dette var ikke det som sto
+ny linje Dette var ikke det som sto
+<<<<<<< HEAD
 ny linje og litt tekst
 ny linje og litt tekst
 ny linje og litt tekst
 ny linje og litt tekst
+=======
+ny linje Dette var ikke det som sto
+ny linje Dette var ikke det som sto
+>>>>>>> Iver_branch
