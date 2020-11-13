@@ -250,7 +250,6 @@ W_BNXV = [BNFV ; BNBV ; BNYV];
 %Stryresnekke (SR=Stearing Rack)
 SRV=[(1550-4.815-105)  213 150.74];
 SRH=[(1550-4.815-105) -213 150.74];
-
 %Upright handlebar
 UHV=[FNYV(1)-67.39  FNYV(2)-23.2  FNYV(3)+48.75];
 UHH=[FNYH(1)-67.39  FNYH(2)+23.2  FNYH(3)+48.75];
