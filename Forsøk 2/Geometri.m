@@ -2,18 +2,22 @@
 
 
 %wheelbase
-Wb_F=1550;
-Wb_B=1550;
+Wb=1552;
 
-%Wheel diameter
-Wd_F = 254;
-Wd_B = 254;
+%track width
+Tw_F = 1200; 
+Tw_B = 1208;
+%Wheel diameter (Felg)
+Wd = 254;
+%Tire Diameter
+Td = 406; 
+
 %Wheelcenter
-Wc_FV = [1550 Wb_F/2 Wd_F/2];
-Wc_FH = [1550 -Wb_F/2 Wd_F/2];
+Wc_FV = [Wb Tw_F/2 Td/2];
+Wc_FH = [Wb -Tw_F/2 Td/2];
 
-Wc_BV = [0 Wb_B/2 Wd_B/2];
-Wc_BH = [0 -Wb_B/2 Wd_B/2];
+Wc_BV = [0 Tw_B/2 Td/2];
+Wc_BH = [0 -Tw_B/2 Td/2];
 
 %% Rammepunkter
 
@@ -22,10 +26,10 @@ sidebytte=[1  0  0; ...
            0 -1  0; ...
            0  0  1];%Bytter side, venstre til høyre osv.
 %FV
-FOFV = [1550+185 300 232];
-FOBV = [1550-185 300 232];
-FNFV = [1550+185 240 115];
-FNBV = [1550-185 240 115];
+FOFV = [1687 271.7 167];
+FOBV = [1399 271.7 176];
+FNFV = [1693.6 264 50,5];
+FNBV = [1401 268 54,8];
 
 %FH
 FOFH = FOFV*sidebytte;
@@ -33,10 +37,10 @@ FOBH = FOBV*sidebytte;
 FNFH = FNFV*sidebytte;
 FNBH = FNBV*sidebytte;
 %BV
-BOFV = [530 260 270];
-BOBV = [  0 260 270];
-BNFV = [530 225 131];
-BNBV = [  0 225 131];
+BOFV = [510.9 229.6 210];
+BOBV = [-8.82 259.5 210];
+BNFV = [513 264.6 69];
+BNBV = [-8.94 224.5 70];
 %BH
 BOFH = BOFV*sidebytte;
 BOBH = BOBV*sidebytte;
