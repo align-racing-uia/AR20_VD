@@ -1,4 +1,4 @@
-function [AckermannIndre,AckermannYtre] = Ackermann(x)
+function [AckermannIndre,AckermannYtre] = Ackermann(x, Wc_FH, SRH, SRV, UHV, Wc_FV)
 %ACKERMANN Denne funskjonen regner ut ackermann for AR20/21
 %   Bruker relevant geometri på bilen og renger ut ackermann angle i en
 %   sving ved konstant fart. Regner med en "turn angle" fa x=0-81, som
@@ -12,7 +12,7 @@ while R<=2;
     radius=3; %radius of rack and pinion gear
     deltay = steeringangle*radius; %mengden styresnekka beveger seg
     
-    lgd1 = Wc_FH-SRH; %lengden fra Stryesnekke til wheel center
+    lgd1 = Wc_FH - SRH; %lengden fra Stryesnekke til wheel center
     
     lgd2 = SRV-UHV; %lengde på upright
     
@@ -49,9 +49,9 @@ while R<=2;
         
         steeringangle = [x];
     else
-        AckermannIndre = RaPHangle-RaPzero %ackermann - Rack and pinion angle
+        AckermannIndre = RaPHangle-RaPzero; %ackermann - Rack and pinion angle
         
-        AckermannYtre = RaPVangle-RaPzero %ackermann - rackand pinion angle
+        AckermannYtre = RaPVangle-RaPzero; %ackermann - rackand pinion angle
         
     end
     R=R+1;
