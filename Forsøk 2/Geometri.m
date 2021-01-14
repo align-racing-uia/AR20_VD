@@ -28,8 +28,8 @@ sidebytte=[1  0  0; ...
 %FV
 FOFV = [1687 271.7 167];
 FOBV = [1399 271.7 176];
-FNFV = [1693.6 264 50,5];
-FNBV = [1401 268 54,8];
+FNFV = [1693.6 264 50.5];
+FNBV = [1401 268 54.8];
 
 %FH
 FOFH = FOFV*sidebytte;
@@ -135,7 +135,7 @@ defR_BRXV = [defBR1V ; defBR2V ; defBR3V ; defBR4V];
 %FH
 FR1H = defFRXH + defFR1H;%Rocker festepunkt (rotasjonspunkt)
 FR2H = defFRXH + defFR2H;%Rocker demper
-FR3H = defFRXH + defFR3H;
+FR3H = defFRXH + defFR3H; %Pull/pushrod
 FR4H = defFRXH + defFR4H;%Rocker antirollbar
 FDYH = FR2H;
 FDIH = [1550 -255 237];%Innfestning demper
