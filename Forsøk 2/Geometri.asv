@@ -195,8 +195,8 @@ theta_RBV = atan(abs((BR2V(2)-BR1V(2)))/(abs(BR2V(3)-BR1V(3))));
 
 
 %FH
-FOYH = [1550-5.79  -538.53  220.45];
-FNYH = [1550+5.72  -562.99  57];
+FOYH = [1550-5.79  -538.53  220];
+FNYH = [1550+4.815  -(240+292.99)      115+2];
  defFOYH = FOYH - defFOXH;
  defFNYH = FNYH - defFNXH;
  defFPYH = FPYH - defFOXH;
@@ -209,8 +209,8 @@ FNYV = FNYH * sidebytte;
  defFPYV = FPYV - defFOXV;
 
 %BH
-BOYH = [0 -513.6 224.33];
-BNYH = [0 -538.84 61];
+BOYH = [0 -545.786 286.520];
+BNYH = [0 -569.786 101.200];
  defBOYH = BOYH - defBOXH;
  defBNYH = BNYH - defBNXH;
  defBPYH = BPYH - defBOXH;
@@ -252,11 +252,11 @@ W_BNXV = [BNFV ; BNBV ; BNYV];
 %% Styregeometri
 
 %Stryresnekke (SR=Stearing Rack)
-SRV=[1451.14  213 90.74];
-SRH=[1451.14  -213 90.74];
+SRV=[(1550-4.815-105)  213 150.74];
+SRH=[(1550-4.815-105) -213 150.74];
 %Upright handlebar
-UHV=[1491.4  528  109.7];
-UHH=[1491.4  -528  109.7];
+UHV=[FNYV(1)-67.39  FNYV(2)-23.2  FNYV(3)+48.75];
+UHH=[FNYH(1)-67.39  FNYH(2)+23.2  FNYH(3)+48.75];
 
 %% lengder
 
