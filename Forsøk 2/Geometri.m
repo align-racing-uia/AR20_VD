@@ -2,18 +2,22 @@
 
 
 %wheelbase
-Wb_F=1550;
-Wb_B=1550;
+Wb=1552;
 
-%Wheel diameter
-Wd_F = 254;
-Wd_B = 254;
+%track width
+Tw_F = 1200; 
+Tw_B = 1208;
+%Wheel diameter (Felg)
+Wd = 254;
+%Tire Diameter
+Td = 406; 
+
 %Wheelcenter
-Wc_FV = [1550 Wb_F/2 Wd_F/2];
-Wc_FH = [1550 -Wb_F/2 Wd_F/2];
+Wc_FV = [Wb Tw_F/2 Td/2];
+Wc_FH = [Wb -Tw_F/2 Td/2];
 
-Wc_BV = [0 Wb_B/2 Wd_B/2];
-Wc_BH = [0 -Wb_B/2 Wd_B/2];
+Wc_BV = [0 Tw_B/2 Td/2];
+Wc_BH = [0 -Tw_B/2 Td/2];
 
 %% Rammepunkter
 
@@ -22,10 +26,10 @@ sidebytte=[1  0  0; ...
            0 -1  0; ...
            0  0  1];%Bytter side, venstre til høyre osv.
 %FV
-FOFV = [1550+185 300 232];
-FOBV = [1550-185 300 232];
-FNFV = [1550+185 240 115];
-FNBV = [1550-185 240 115];
+FOFV = [1687 271.7 167];
+FOBV = [1399 271.7 176];
+FNFV = [1693.6 264 50.5];
+FNBV = [1401 268 54.8];
 
 %FH
 FOFH = FOFV*sidebytte;
@@ -33,10 +37,10 @@ FOBH = FOBV*sidebytte;
 FNFH = FNFV*sidebytte;
 FNBH = FNBV*sidebytte;
 %BV
-BOFV = [530 260 270];
-BOBV = [  0 260 270];
-BNFV = [530 225 131];
-BNBV = [  0 225 131];
+BOFV = [510.9 229.6 210];
+BOBV = [-8.82 259.5 210];
+BNFV = [513 264.6 69];
+BNBV = [-8.94 224.5 70];
 %BH
 BOFH = BOFV*sidebytte;
 BOBH = BOBV*sidebytte;
@@ -95,11 +99,11 @@ BNBH = BNBV*sidebytte;
 
 %rocker form (avstand fra rotasjonspunkt FR1H)
 %FH
-defFRXH = [1550 -250  60];
-defFR1H = [   0    0   0];
-defFR2H = [   0  -84 -10];
-defFR3H = [   0 -115   0];
-defFR4H = [   0 -120   0];
+defFRXH = [1550 -246  60];
+defFR1H = [   0    0   0]; %I forhold til FRXH
+defFR2H = [   0  -84.34 -6.6]; %I forhold til FRXH
+defFR3H = [   0 -115   4.66]; %I forhold til FRXH
+defFR4H = [   0 -30.58   13.77]; %I forhold til FRXH
 
 %FV
 defFRXV = defFRXH * sidebytte;
@@ -109,11 +113,11 @@ defFR3V = defFR3H * sidebytte;
 defFR4V = defFR4H * sidebytte;
 
 %BH
-defBRXH = [0 -250 380];
-defBR1H = [0    0   0];
-defBR2H = [0    0  70];
-defBR3H = [0  -38 105];
-defBR4H = [0    0   0];
+defBRXH = [7.5 -305.45 325]; 
+defBR1H = [0    0   0]; %i forhold til BRXH
+defBR2H = [0    4.13  69.88]; %i forhold til BRXH
+defBR3H = [0  -31.7 107.06]; %i forhold til BRXH
+defBR4H = [0    46.33   12.76]; %i forhold til BRXH
 
 %BV
 defBRXV = defBRXH * sidebytte;
@@ -131,7 +135,7 @@ defR_BRXV = [defBR1V ; defBR2V ; defBR3V ; defBR4V];
 %FH
 FR1H = defFRXH + defFR1H;%Rocker festepunkt (rotasjonspunkt)
 FR2H = defFRXH + defFR2H;%Rocker demper
-FR3H = defFRXH + defFR3H;
+FR3H = defFRXH + defFR3H; %Pull/pushrod
 FR4H = defFRXH + defFR4H;%Rocker antirollbar
 FDYH = FR2H;
 FDIH = [1550 -255 237];%Innfestning demper
@@ -148,7 +152,7 @@ BR2H = defBRXH + defBR2H;%Rocker demper
 BR3H = defBRXH + defBR3H;
 BR4H = defBRXH + defBR4H;%Rocker antirollbar
 BDYH = BR2H;
-BDIH = [0 -122 390];%Innfestning demper
+BDIH = [7.5 -125 330];%Innfestning demper
 %BV
 BR1V = BR1H * sidebytte;
 BR2V = defBRXV + defBR2V;%Rocker demper
@@ -191,8 +195,8 @@ theta_RBV = atan(abs((BR2V(2)-BR1V(2)))/(abs(BR2V(3)-BR1V(3))));
 
 
 %FH
-FOYH = [1550-4.815  -(300+238.13)  232+48.39];
-FNYH = [1550+4.815  -(240+292.99)      115+2];
+FOYH = [1550-5.79  -538.53  220.45];
+FNYH = [1550+5.72  -562.99  57];
  defFOYH = FOYH - defFOXH;
  defFNYH = FNYH - defFNXH;
  defFPYH = FPYH - defFOXH;
@@ -205,8 +209,8 @@ FNYV = FNYH * sidebytte;
  defFPYV = FPYV - defFOXV;
 
 %BH
-BOYH = [0 -545.786 286.520];
-BNYH = [0 -569.786 101.200];
+BOYH = [0 -513.6 224.33];
+BNYH = [0 -538.84 61];
  defBOYH = BOYH - defBOXH;
  defBNYH = BNYH - defBNXH;
  defBPYH = BPYH - defBOXH;
@@ -248,12 +252,11 @@ W_BNXV = [BNFV ; BNBV ; BNYV];
 %% Styregeometri
 
 %Stryresnekke (SR=Stearing Rack)
-SRV=[(1550-4.815-105)  213 150.74];
-SRH=[(1550-4.815-105) -213 150.74];
-
+SRV=[1451.14  213 90.74];
+SRH=[1451.14  -213 90.74];
 %Upright handlebar
-UHV=[FNYV(1)-67.39  FNYV(2)-23.2  FNYV(3)+48.75];
-UHH=[FNYH(1)-67.39  FNYH(2)+23.2  FNYH(3)+48.75];
+UHV=[1491.4  528  109.7];
+UHH=[1491.4  -528  109.7];
 
 %% lengder
 
