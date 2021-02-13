@@ -1,6 +1,7 @@
 %% Hjul relatert
 
-
+% Center of gravity height
+CGH = 309;
 %wheelbase
 Wb=1552;
 
