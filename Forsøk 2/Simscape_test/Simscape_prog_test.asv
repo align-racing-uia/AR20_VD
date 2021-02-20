@@ -1,0 +1,7 @@
+%Simscape test script. Run simscape progrematicly
+clear
+close
+clc
+r1 = 0.5 %m
+simout = sim('Simscape_prog')
+plot(simulink.SimulationOutput simout.simout simout.tout)
