@@ -10,7 +10,7 @@ UCYtr = [25,0,0]
 ST = [8,61,34]
 
 %Upright feste på bunnen
-FNYH = [0,-82,5.72]
+FNYH = [0,-5.72,-82]
 
 %Menge shims 
 sh = 5
