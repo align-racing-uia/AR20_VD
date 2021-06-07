@@ -1,5 +1,10 @@
 %% Hjul relatert
 
+% simulation veriables
+% Lower and upper bound wheel rest
+lower_bound = -50;
+upper_bound = 100;
+
 % Center of gravity height
 CGH = 309;
 %wheelbase

@@ -1,0 +1,667 @@
+%implements s0_b0_nx5di_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+NeslSimulationData *simulationData;
+NeuDiagnosticManager *diagnosticManager;
+NeuDiagnosticTree *diagnosticTree;
+char *msg;
+real_T tmp_4[149];
+real_T tmp_1[16];
+real_T tmp_8[10];
+real_T tmp_c[10];
+real_T tmp_g[10];
+real_T tmp_k[10];
+real_T tmp_6[4];
+real_T tmp_a[4];
+real_T tmp_e[4];
+real_T tmp_i[4];
+real_T time;
+real_T time_0;
+real_T time_1;
+real_T time_2;
+real_T time_3;
+real_T time_4;
+real_T time_5;
+real_T time_6;
+real_T time_7;
+real_T time_8;
+real_T time_tmp;
+int32_T tmp_3;
+int_T tmp_5[6];
+int_T tmp_2[5];
+int_T tmp_9[3];
+int_T tmp_d[3];
+int_T tmp_h[3];
+int_T tmp_l[3];
+int_T tmp_7[2];
+int_T tmp_b[2];
+int_T tmp_f[2];
+int_T tmp_j[2];
+boolean_T tmp;
+boolean_T tmp_0;
+%closefile localVarDecl
+/* {S!d32}SimscapeExecutionBlock: '<S7>/STATE_5' incorporates:
+ *  SimscapeExecutionBlock: '<S7>/OUTPUT_1_0'
+ *  SimscapeExecutionBlock: '<S7>/OUTPUT_2_0'
+ *  SimscapeExecutionBlock: '<S7>/OUTPUT_3_0'
+ *  SimscapeExecutionBlock: '<S7>/OUTPUT_4_0'
+ *  SimscapeExecutionBlock: '<S7>/OUTPUT_5_0'
+ *  SimscapeExecutionBlock: '<S7>/STATE_1'
+ *  SimscapeExecutionBlock: '<S7>/STATE_2'
+ *  SimscapeExecutionBlock: '<S7>/STATE_3'
+ *  SimscapeExecutionBlock: '<S7>/STATE_4'
+ */
+simulationData = (NeslSimulationData *)dempsystest_bjorn_DW.STATE_5_SimData;
+time_tmp = %<(SLibCG_SE(LibGetT()))>;
+time = time_tmp;
+simulationData->mData->mTime.mN = 1;
+simulationData->mData->mTime.mX = &time;
+simulationData->mData->mContStates.mN = 133;
+simulationData->mData->mContStates.mX = &dempsystest_bjorn_X.dempsystest_bjornSubsystemWheel[0];
+simulationData->mData->mDiscStates.mN = 0;
+simulationData->mData->mDiscStates.mX = &dempsystest_bjorn_DW.STATE_5_Discrete;
+simulationData->mData->mModeVector.mN = 0;
+simulationData->mData->mModeVector.mX = &dempsystest_bjorn_DW.STATE_5_Modes;
+tmp = %<(SLibCG_SE(SLibCGIRGetSolverFoundZcEvents()))>;
+simulationData->mData->mFoundZcEvents = tmp;
+tmp = %<(SLibCG_SE(LibIsMajorTimeStep()))>;
+simulationData->mData->mIsMajorTimeStep = tmp;
+tmp_0 = %<(SLibCG_SE(SLibCGIRGetSolverAssertCheck()))>;
+simulationData->mData->mIsSolverAssertCheck = tmp_0;
+simulationData->mData->mIsSolverCheckingCIC = false;
+tmp_0 = %<(SLibCG_SE(RTMIsSolverComputingJacobian()))>;
+simulationData->mData->mIsComputingJacobian = tmp_0;
+simulationData->mData->mIsEvaluatingF0 = false;
+simulationData->mData->mIsSolverRequestingReset = false;
+tmp_2[0] = 0;
+tmp_1[0] = dempsystest_bjorn_B.INTERNAL_1_1_1[0];
+tmp_1[1] = dempsystest_bjorn_B.INTERNAL_1_1_1[1];
+tmp_1[2] = dempsystest_bjorn_B.INTERNAL_1_1_1[2];
+tmp_1[3] = dempsystest_bjorn_B.INTERNAL_1_1_1[3];
+tmp_2[1] = 4;
+tmp_1[4] = dempsystest_bjorn_B.INTERNAL_3_1_1[0];
+tmp_1[5] = dempsystest_bjorn_B.INTERNAL_3_1_1[1];
+tmp_1[6] = dempsystest_bjorn_B.INTERNAL_3_1_1[2];
+tmp_1[7] = dempsystest_bjorn_B.INTERNAL_3_1_1[3];
+tmp_2[2] = 8;
+tmp_1[8] = dempsystest_bjorn_B.INTERNAL_5_1_1[0];
+tmp_1[9] = dempsystest_bjorn_B.INTERNAL_5_1_1[1];
+tmp_1[10] = dempsystest_bjorn_B.INTERNAL_5_1_1[2];
+tmp_1[11] = dempsystest_bjorn_B.INTERNAL_5_1_1[3];
+tmp_2[3] = 12;
+tmp_1[12] = dempsystest_bjorn_B.INTERNAL_7_1_1[0];
+tmp_1[13] = dempsystest_bjorn_B.INTERNAL_7_1_1[1];
+tmp_1[14] = dempsystest_bjorn_B.INTERNAL_7_1_1[2];
+tmp_1[15] = dempsystest_bjorn_B.INTERNAL_7_1_1[3];
+tmp_2[4] = 16;
+simulationData->mData->mInputValues.mN = 16;
+simulationData->mData->mInputValues.mX = &tmp_1[0];
+simulationData->mData->mInputOffsets.mN = 5;
+simulationData->mData->mInputOffsets.mX = &tmp_2[0];
+simulationData->mData->mOutputs.mN = 133;
+simulationData->mData->mOutputs.mX = &dempsystest_bjorn_B.STATE_5[0];
+simulationData->mData->mSampleHits.mN = 0;
+simulationData->mData->mSampleHits.mX = NULL;
+simulationData->mData->mIsFundamentalSampleHit = false;
+simulationData->mData->mTolerances.mN = 0;
+simulationData->mData->mTolerances.mX = NULL;
+simulationData->mData->mCstateHasChanged = false;
+diagnosticManager = (NeuDiagnosticManager *)dempsystest_bjorn_DW.STATE_5_DiagMgr;
+diagnosticTree = neu_diagnostic_manager_get_initial_tree(diagnosticManager);
+tmp_3 = ne_simulator_method((NeslSimulator *)dempsystest_bjorn_DW.STATE_5_Simulator, NESL_SIM_OUTPUTS, simulationData, diagnosticManager);
+if (tmp_3 != 0) {
+    tmp_0 = error_buffer_is_empty(%<(LibGetRTModelErrorStatus())>);
+    if (tmp_0) {
+        msg = rtw_diagnostics_msg(diagnosticTree);
+        %<(LibSetRTModelErrorStatus("msg"))>;
+    }
+}
+/* {E!d32}End of SimscapeExecutionBlock: '<S7>/STATE_5' */
+
+/* {S!d34}SimscapeExecutionBlock: '<S7>/OUTPUT_5_0' */
+simulationData = (NeslSimulationData *)dempsystest_bjorn_DW.OUTPUT_5_0_SimData;
+time_0 = time_tmp;
+simulationData->mData->mTime.mN = 1;
+simulationData->mData->mTime.mX = &time_0;
+simulationData->mData->mContStates.mN = 0;
+simulationData->mData->mContStates.mX = NULL;
+simulationData->mData->mDiscStates.mN = 0;
+simulationData->mData->mDiscStates.mX = &dempsystest_bjorn_DW.OUTPUT_5_0_Discrete;
+simulationData->mData->mModeVector.mN = 0;
+simulationData->mData->mModeVector.mX = &dempsystest_bjorn_DW.OUTPUT_5_0_Modes;
+tmp_0 = %<(SLibCG_SE(SLibCGIRGetSolverFoundZcEvents()))>;
+simulationData->mData->mFoundZcEvents = tmp_0;
+simulationData->mData->mIsMajorTimeStep = tmp;
+tmp_0 = %<(SLibCG_SE(SLibCGIRGetSolverAssertCheck()))>;
+simulationData->mData->mIsSolverAssertCheck = tmp_0;
+simulationData->mData->mIsSolverCheckingCIC = false;
+simulationData->mData->mIsComputingJacobian = false;
+simulationData->mData->mIsEvaluatingF0 = false;
+simulationData->mData->mIsSolverRequestingReset = false;
+tmp_5[0] = 0;
+tmp_4[0] = dempsystest_bjorn_B.INTERNAL_1_1_1[0];
+tmp_4[1] = dempsystest_bjorn_B.INTERNAL_1_1_1[1];
+tmp_4[2] = dempsystest_bjorn_B.INTERNAL_1_1_1[2];
+tmp_4[3] = dempsystest_bjorn_B.INTERNAL_1_1_1[3];
+tmp_5[1] = 4;
+tmp_4[4] = dempsystest_bjorn_B.INTERNAL_3_1_1[0];
+tmp_4[5] = dempsystest_bjorn_B.INTERNAL_3_1_1[1];
+tmp_4[6] = dempsystest_bjorn_B.INTERNAL_3_1_1[2];
+tmp_4[7] = dempsystest_bjorn_B.INTERNAL_3_1_1[3];
+tmp_5[2] = 8;
+tmp_4[8] = dempsystest_bjorn_B.INTERNAL_5_1_1[0];
+tmp_4[9] = dempsystest_bjorn_B.INTERNAL_5_1_1[1];
+tmp_4[10] = dempsystest_bjorn_B.INTERNAL_5_1_1[2];
+tmp_4[11] = dempsystest_bjorn_B.INTERNAL_5_1_1[3];
+tmp_5[3] = 12;
+tmp_4[12] = dempsystest_bjorn_B.INTERNAL_7_1_1[0];
+tmp_4[13] = dempsystest_bjorn_B.INTERNAL_7_1_1[1];
+tmp_4[14] = dempsystest_bjorn_B.INTERNAL_7_1_1[2];
+tmp_4[15] = dempsystest_bjorn_B.INTERNAL_7_1_1[3];
+tmp_5[4] = 16;
+memcpy(&tmp_4[16], &dempsystest_bjorn_B.STATE_5[0], 133U * sizeof(real_T));
+tmp_5[5] = 149;
+simulationData->mData->mInputValues.mN = 149;
+simulationData->mData->mInputValues.mX = &tmp_4[0];
+simulationData->mData->mInputOffsets.mN = 6;
+simulationData->mData->mInputOffsets.mX = &tmp_5[0];
+simulationData->mData->mOutputs.mN = 4;
+simulationData->mData->mOutputs.mX = &dempsystest_bjorn_B.OUTPUT_5_0[0];
+simulationData->mData->mSampleHits.mN = 0;
+simulationData->mData->mSampleHits.mX = NULL;
+simulationData->mData->mIsFundamentalSampleHit = false;
+simulationData->mData->mTolerances.mN = 0;
+simulationData->mData->mTolerances.mX = NULL;
+simulationData->mData->mCstateHasChanged = false;
+diagnosticManager = (NeuDiagnosticManager *)dempsystest_bjorn_DW.OUTPUT_5_0_DiagMgr;
+diagnosticTree = neu_diagnostic_manager_get_initial_tree(diagnosticManager);
+tmp_3 = ne_simulator_method((NeslSimulator *)dempsystest_bjorn_DW.OUTPUT_5_0_Simulator, NESL_SIM_OUTPUTS, simulationData, diagnosticManager);
+if (tmp_3 != 0) {
+    tmp_0 = error_buffer_is_empty(%<(LibGetRTModelErrorStatus())>);
+    if (tmp_0) {
+        msg = rtw_diagnostics_msg(diagnosticTree);
+        %<(LibSetRTModelErrorStatus("msg"))>;
+    }
+}
+/* {S!d36}SimscapeInputBlock: '<S7>/INTERNAL_2_1_1' */
+dempsystest_bjorn_B.INTERNAL_2_1_1[0] = dempsystest_bjorn_B.OUTPUT_5_0[0];
+dempsystest_bjorn_B.INTERNAL_2_1_1[1] = 0.0;
+dempsystest_bjorn_B.INTERNAL_2_1_1[2] = 0.0;
+dempsystest_bjorn_B.INTERNAL_2_1_1[3] = 0.0;
+/* {S!d38}SimscapeExecutionBlock: '<S7>/STATE_4' */
+simulationData = (NeslSimulationData *)dempsystest_bjorn_DW.STATE_4_SimData;
+time_1 = time_tmp;
+simulationData->mData->mTime.mN = 1;
+simulationData->mData->mTime.mX = &time_1;
+simulationData->mData->mContStates.mN = 1;
+simulationData->mData->mContStates.mX = &dempsystest_bjorn_X.dempsystest_bjornSubsystemWhe_p;
+simulationData->mData->mDiscStates.mN = 3;
+simulationData->mData->mDiscStates.mX = &dempsystest_bjorn_DW.STATE_4_Discrete[0];
+simulationData->mData->mModeVector.mN = 2;
+simulationData->mData->mModeVector.mX = &dempsystest_bjorn_DW.STATE_4_Modes[0];
+tmp_0 = %<(SLibCG_SE(SLibCGIRGetSolverFoundZcEvents()))>;
+simulationData->mData->mFoundZcEvents = tmp_0;
+simulationData->mData->mIsMajorTimeStep = tmp;
+tmp_0 = %<(SLibCG_SE(SLibCGIRGetSolverAssertCheck()))>;
+simulationData->mData->mIsSolverAssertCheck = tmp_0;
+simulationData->mData->mIsSolverCheckingCIC = false;
+tmp_0 = %<(SLibCG_SE(RTMIsSolverComputingJacobian()))>;
+simulationData->mData->mIsComputingJacobian = tmp_0;
+simulationData->mData->mIsEvaluatingF0 = false;
+simulationData->mData->mIsSolverRequestingReset = false;
+tmp_7[0] = 0;
+tmp_6[0] = dempsystest_bjorn_B.INTERNAL_2_1_1[0];
+tmp_6[1] = dempsystest_bjorn_B.INTERNAL_2_1_1[1];
+tmp_6[2] = dempsystest_bjorn_B.INTERNAL_2_1_1[2];
+tmp_6[3] = dempsystest_bjorn_B.INTERNAL_2_1_1[3];
+tmp_7[1] = 4;
+simulationData->mData->mInputValues.mN = 4;
+simulationData->mData->mInputValues.mX = &tmp_6[0];
+simulationData->mData->mInputOffsets.mN = 2;
+simulationData->mData->mInputOffsets.mX = &tmp_7[0];
+simulationData->mData->mOutputs.mN = 6;
+simulationData->mData->mOutputs.mX = &dempsystest_bjorn_B.STATE_4[0];
+simulationData->mData->mSampleHits.mN = 0;
+simulationData->mData->mSampleHits.mX = NULL;
+simulationData->mData->mIsFundamentalSampleHit = false;
+simulationData->mData->mTolerances.mN = 0;
+simulationData->mData->mTolerances.mX = NULL;
+simulationData->mData->mCstateHasChanged = false;
+diagnosticManager = (NeuDiagnosticManager *)dempsystest_bjorn_DW.STATE_4_DiagMgr;
+diagnosticTree = neu_diagnostic_manager_get_initial_tree(diagnosticManager);
+tmp_3 = ne_simulator_method((NeslSimulator *)dempsystest_bjorn_DW.STATE_4_Simulator, NESL_SIM_OUTPUTS, simulationData, diagnosticManager);
+if (tmp_3 != 0) {
+    tmp_0 = error_buffer_is_empty(%<(LibGetRTModelErrorStatus())>);
+    if (tmp_0) {
+        msg = rtw_diagnostics_msg(diagnosticTree);
+        %<(LibSetRTModelErrorStatus("msg"))>;
+    }
+}
+/* {S!d40}SimscapeExecutionBlock: '<S7>/OUTPUT_4_0' */
+simulationData = (NeslSimulationData *)dempsystest_bjorn_DW.OUTPUT_4_0_SimData;
+time_2 = time_tmp;
+simulationData->mData->mTime.mN = 1;
+simulationData->mData->mTime.mX = &time_2;
+simulationData->mData->mContStates.mN = 0;
+simulationData->mData->mContStates.mX = NULL;
+simulationData->mData->mDiscStates.mN = 0;
+simulationData->mData->mDiscStates.mX = &dempsystest_bjorn_DW.OUTPUT_4_0_Discrete;
+simulationData->mData->mModeVector.mN = 0;
+simulationData->mData->mModeVector.mX = &dempsystest_bjorn_DW.OUTPUT_4_0_Modes;
+tmp_0 = %<(SLibCG_SE(SLibCGIRGetSolverFoundZcEvents()))>;
+simulationData->mData->mFoundZcEvents = tmp_0;
+simulationData->mData->mIsMajorTimeStep = tmp;
+tmp_0 = %<(SLibCG_SE(SLibCGIRGetSolverAssertCheck()))>;
+simulationData->mData->mIsSolverAssertCheck = tmp_0;
+simulationData->mData->mIsSolverCheckingCIC = false;
+simulationData->mData->mIsComputingJacobian = false;
+simulationData->mData->mIsEvaluatingF0 = false;
+simulationData->mData->mIsSolverRequestingReset = false;
+tmp_9[0] = 0;
+tmp_8[0] = dempsystest_bjorn_B.INTERNAL_2_1_1[0];
+tmp_8[1] = dempsystest_bjorn_B.INTERNAL_2_1_1[1];
+tmp_8[2] = dempsystest_bjorn_B.INTERNAL_2_1_1[2];
+tmp_8[3] = dempsystest_bjorn_B.INTERNAL_2_1_1[3];
+tmp_9[1] = 4;
+tmp_8[4] = dempsystest_bjorn_B.STATE_4[0];
+tmp_8[5] = dempsystest_bjorn_B.STATE_4[1];
+tmp_8[6] = dempsystest_bjorn_B.STATE_4[2];
+tmp_8[7] = dempsystest_bjorn_B.STATE_4[3];
+tmp_8[8] = dempsystest_bjorn_B.STATE_4[4];
+tmp_8[9] = dempsystest_bjorn_B.STATE_4[5];
+tmp_9[2] = 10;
+simulationData->mData->mInputValues.mN = 10;
+simulationData->mData->mInputValues.mX = &tmp_8[0];
+simulationData->mData->mInputOffsets.mN = 3;
+simulationData->mData->mInputOffsets.mX = &tmp_9[0];
+simulationData->mData->mOutputs.mN = 1;
+/* {S!d42}SimscapeExecutionBlock: '<S7>/OUTPUT_4_0' */
+simulationData->mData->mOutputs.mX = &dempsystest_bjorn_B.OUTPUT_4_0;
+/* {S!d44}SimscapeExecutionBlock: '<S7>/OUTPUT_4_0' */
+simulationData->mData->mSampleHits.mN = 0;
+simulationData->mData->mSampleHits.mX = NULL;
+simulationData->mData->mIsFundamentalSampleHit = false;
+simulationData->mData->mTolerances.mN = 0;
+simulationData->mData->mTolerances.mX = NULL;
+simulationData->mData->mCstateHasChanged = false;
+diagnosticManager = (NeuDiagnosticManager *)dempsystest_bjorn_DW.OUTPUT_4_0_DiagMgr;
+diagnosticTree = neu_diagnostic_manager_get_initial_tree(diagnosticManager);
+tmp_3 = ne_simulator_method((NeslSimulator *)dempsystest_bjorn_DW.OUTPUT_4_0_Simulator, NESL_SIM_OUTPUTS, simulationData, diagnosticManager);
+if (tmp_3 != 0) {
+    tmp_0 = error_buffer_is_empty(%<(LibGetRTModelErrorStatus())>);
+    if (tmp_0) {
+        msg = rtw_diagnostics_msg(diagnosticTree);
+        %<(LibSetRTModelErrorStatus("msg"))>;
+    }
+}
+/* {S!d46}SimscapeInputBlock: '<S7>/INTERNAL_1_1_1' */
+dempsystest_bjorn_B.INTERNAL_1_1_1[0] = dempsystest_bjorn_B.OUTPUT_4_0;
+dempsystest_bjorn_B.INTERNAL_1_1_1[1] = 0.0;
+dempsystest_bjorn_B.INTERNAL_1_1_1[2] = 0.0;
+dempsystest_bjorn_B.INTERNAL_1_1_1[3] = 0.0;
+/* {S!d48}SimscapeInputBlock: '<S7>/INTERNAL_4_1_1' */
+dempsystest_bjorn_B.INTERNAL_4_1_1[0] = dempsystest_bjorn_B.OUTPUT_5_0[1];
+dempsystest_bjorn_B.INTERNAL_4_1_1[1] = 0.0;
+dempsystest_bjorn_B.INTERNAL_4_1_1[2] = 0.0;
+dempsystest_bjorn_B.INTERNAL_4_1_1[3] = 0.0;
+/* {S!d50}SimscapeExecutionBlock: '<S7>/STATE_2' */
+simulationData = (NeslSimulationData *)dempsystest_bjorn_DW.STATE_2_SimData;
+time_3 = time_tmp;
+simulationData->mData->mTime.mN = 1;
+simulationData->mData->mTime.mX = &time_3;
+simulationData->mData->mContStates.mN = 1;
+simulationData->mData->mContStates.mX = &dempsystest_bjorn_X.dempsystest_bjornSubsystemWhe_g;
+simulationData->mData->mDiscStates.mN = 3;
+simulationData->mData->mDiscStates.mX = &dempsystest_bjorn_DW.STATE_2_Discrete[0];
+simulationData->mData->mModeVector.mN = 2;
+simulationData->mData->mModeVector.mX = &dempsystest_bjorn_DW.STATE_2_Modes[0];
+tmp_0 = %<(SLibCG_SE(SLibCGIRGetSolverFoundZcEvents()))>;
+simulationData->mData->mFoundZcEvents = tmp_0;
+simulationData->mData->mIsMajorTimeStep = tmp;
+tmp_0 = %<(SLibCG_SE(SLibCGIRGetSolverAssertCheck()))>;
+simulationData->mData->mIsSolverAssertCheck = tmp_0;
+simulationData->mData->mIsSolverCheckingCIC = false;
+tmp_0 = %<(SLibCG_SE(RTMIsSolverComputingJacobian()))>;
+simulationData->mData->mIsComputingJacobian = tmp_0;
+simulationData->mData->mIsEvaluatingF0 = false;
+simulationData->mData->mIsSolverRequestingReset = false;
+tmp_b[0] = 0;
+tmp_a[0] = dempsystest_bjorn_B.INTERNAL_4_1_1[0];
+tmp_a[1] = dempsystest_bjorn_B.INTERNAL_4_1_1[1];
+tmp_a[2] = dempsystest_bjorn_B.INTERNAL_4_1_1[2];
+tmp_a[3] = dempsystest_bjorn_B.INTERNAL_4_1_1[3];
+tmp_b[1] = 4;
+simulationData->mData->mInputValues.mN = 4;
+simulationData->mData->mInputValues.mX = &tmp_a[0];
+simulationData->mData->mInputOffsets.mN = 2;
+simulationData->mData->mInputOffsets.mX = &tmp_b[0];
+simulationData->mData->mOutputs.mN = 6;
+simulationData->mData->mOutputs.mX = &dempsystest_bjorn_B.STATE_2[0];
+simulationData->mData->mSampleHits.mN = 0;
+simulationData->mData->mSampleHits.mX = NULL;
+simulationData->mData->mIsFundamentalSampleHit = false;
+simulationData->mData->mTolerances.mN = 0;
+simulationData->mData->mTolerances.mX = NULL;
+simulationData->mData->mCstateHasChanged = false;
+diagnosticManager = (NeuDiagnosticManager *)dempsystest_bjorn_DW.STATE_2_DiagMgr;
+diagnosticTree = neu_diagnostic_manager_get_initial_tree(diagnosticManager);
+tmp_3 = ne_simulator_method((NeslSimulator *)dempsystest_bjorn_DW.STATE_2_Simulator, NESL_SIM_OUTPUTS, simulationData, diagnosticManager);
+if (tmp_3 != 0) {
+    tmp_0 = error_buffer_is_empty(%<(LibGetRTModelErrorStatus())>);
+    if (tmp_0) {
+        msg = rtw_diagnostics_msg(diagnosticTree);
+        %<(LibSetRTModelErrorStatus("msg"))>;
+    }
+}
+/* {S!d52}SimscapeExecutionBlock: '<S7>/OUTPUT_2_0' */
+simulationData = (NeslSimulationData *)dempsystest_bjorn_DW.OUTPUT_2_0_SimData;
+time_4 = time_tmp;
+simulationData->mData->mTime.mN = 1;
+simulationData->mData->mTime.mX = &time_4;
+simulationData->mData->mContStates.mN = 0;
+simulationData->mData->mContStates.mX = NULL;
+simulationData->mData->mDiscStates.mN = 0;
+simulationData->mData->mDiscStates.mX = &dempsystest_bjorn_DW.OUTPUT_2_0_Discrete;
+simulationData->mData->mModeVector.mN = 0;
+simulationData->mData->mModeVector.mX = &dempsystest_bjorn_DW.OUTPUT_2_0_Modes;
+tmp_0 = %<(SLibCG_SE(SLibCGIRGetSolverFoundZcEvents()))>;
+simulationData->mData->mFoundZcEvents = tmp_0;
+simulationData->mData->mIsMajorTimeStep = tmp;
+tmp_0 = %<(SLibCG_SE(SLibCGIRGetSolverAssertCheck()))>;
+simulationData->mData->mIsSolverAssertCheck = tmp_0;
+simulationData->mData->mIsSolverCheckingCIC = false;
+simulationData->mData->mIsComputingJacobian = false;
+simulationData->mData->mIsEvaluatingF0 = false;
+simulationData->mData->mIsSolverRequestingReset = false;
+tmp_d[0] = 0;
+tmp_c[0] = dempsystest_bjorn_B.INTERNAL_4_1_1[0];
+tmp_c[1] = dempsystest_bjorn_B.INTERNAL_4_1_1[1];
+tmp_c[2] = dempsystest_bjorn_B.INTERNAL_4_1_1[2];
+tmp_c[3] = dempsystest_bjorn_B.INTERNAL_4_1_1[3];
+tmp_d[1] = 4;
+tmp_c[4] = dempsystest_bjorn_B.STATE_2[0];
+tmp_c[5] = dempsystest_bjorn_B.STATE_2[1];
+tmp_c[6] = dempsystest_bjorn_B.STATE_2[2];
+tmp_c[7] = dempsystest_bjorn_B.STATE_2[3];
+tmp_c[8] = dempsystest_bjorn_B.STATE_2[4];
+tmp_c[9] = dempsystest_bjorn_B.STATE_2[5];
+tmp_d[2] = 10;
+simulationData->mData->mInputValues.mN = 10;
+simulationData->mData->mInputValues.mX = &tmp_c[0];
+simulationData->mData->mInputOffsets.mN = 3;
+simulationData->mData->mInputOffsets.mX = &tmp_d[0];
+simulationData->mData->mOutputs.mN = 1;
+/* {S!d54}SimscapeExecutionBlock: '<S7>/OUTPUT_2_0' */
+simulationData->mData->mOutputs.mX = &dempsystest_bjorn_B.OUTPUT_2_0;
+/* {S!d56}SimscapeExecutionBlock: '<S7>/OUTPUT_2_0' */
+simulationData->mData->mSampleHits.mN = 0;
+simulationData->mData->mSampleHits.mX = NULL;
+simulationData->mData->mIsFundamentalSampleHit = false;
+simulationData->mData->mTolerances.mN = 0;
+simulationData->mData->mTolerances.mX = NULL;
+simulationData->mData->mCstateHasChanged = false;
+diagnosticManager = (NeuDiagnosticManager *)dempsystest_bjorn_DW.OUTPUT_2_0_DiagMgr;
+diagnosticTree = neu_diagnostic_manager_get_initial_tree(diagnosticManager);
+tmp_3 = ne_simulator_method((NeslSimulator *)dempsystest_bjorn_DW.OUTPUT_2_0_Simulator, NESL_SIM_OUTPUTS, simulationData, diagnosticManager);
+if (tmp_3 != 0) {
+    tmp_0 = error_buffer_is_empty(%<(LibGetRTModelErrorStatus())>);
+    if (tmp_0) {
+        msg = rtw_diagnostics_msg(diagnosticTree);
+        %<(LibSetRTModelErrorStatus("msg"))>;
+    }
+}
+/* {S!d58}SimscapeInputBlock: '<S7>/INTERNAL_3_1_1' */
+dempsystest_bjorn_B.INTERNAL_3_1_1[0] = dempsystest_bjorn_B.OUTPUT_2_0;
+dempsystest_bjorn_B.INTERNAL_3_1_1[1] = 0.0;
+dempsystest_bjorn_B.INTERNAL_3_1_1[2] = 0.0;
+dempsystest_bjorn_B.INTERNAL_3_1_1[3] = 0.0;
+/* {S!d60}SimscapeInputBlock: '<S7>/INTERNAL_6_1_1' */
+dempsystest_bjorn_B.INTERNAL_6_1_1[0] = dempsystest_bjorn_B.OUTPUT_5_0[2];
+dempsystest_bjorn_B.INTERNAL_6_1_1[1] = 0.0;
+dempsystest_bjorn_B.INTERNAL_6_1_1[2] = 0.0;
+dempsystest_bjorn_B.INTERNAL_6_1_1[3] = 0.0;
+/* {S!d62}SimscapeExecutionBlock: '<S7>/STATE_3' */
+simulationData = (NeslSimulationData *)dempsystest_bjorn_DW.STATE_3_SimData;
+time_5 = time_tmp;
+simulationData->mData->mTime.mN = 1;
+simulationData->mData->mTime.mX = &time_5;
+simulationData->mData->mContStates.mN = 1;
+simulationData->mData->mContStates.mX = &dempsystest_bjorn_X.dempsystest_bjornWheel_Rest1Har;
+simulationData->mData->mDiscStates.mN = 3;
+simulationData->mData->mDiscStates.mX = &dempsystest_bjorn_DW.STATE_3_Discrete[0];
+simulationData->mData->mModeVector.mN = 2;
+simulationData->mData->mModeVector.mX = &dempsystest_bjorn_DW.STATE_3_Modes[0];
+tmp_0 = %<(SLibCG_SE(SLibCGIRGetSolverFoundZcEvents()))>;
+simulationData->mData->mFoundZcEvents = tmp_0;
+simulationData->mData->mIsMajorTimeStep = tmp;
+tmp_0 = %<(SLibCG_SE(SLibCGIRGetSolverAssertCheck()))>;
+simulationData->mData->mIsSolverAssertCheck = tmp_0;
+simulationData->mData->mIsSolverCheckingCIC = false;
+tmp_0 = %<(SLibCG_SE(RTMIsSolverComputingJacobian()))>;
+simulationData->mData->mIsComputingJacobian = tmp_0;
+simulationData->mData->mIsEvaluatingF0 = false;
+simulationData->mData->mIsSolverRequestingReset = false;
+tmp_f[0] = 0;
+tmp_e[0] = dempsystest_bjorn_B.INTERNAL_6_1_1[0];
+tmp_e[1] = dempsystest_bjorn_B.INTERNAL_6_1_1[1];
+tmp_e[2] = dempsystest_bjorn_B.INTERNAL_6_1_1[2];
+tmp_e[3] = dempsystest_bjorn_B.INTERNAL_6_1_1[3];
+tmp_f[1] = 4;
+simulationData->mData->mInputValues.mN = 4;
+simulationData->mData->mInputValues.mX = &tmp_e[0];
+simulationData->mData->mInputOffsets.mN = 2;
+simulationData->mData->mInputOffsets.mX = &tmp_f[0];
+simulationData->mData->mOutputs.mN = 6;
+simulationData->mData->mOutputs.mX = &dempsystest_bjorn_B.STATE_3[0];
+simulationData->mData->mSampleHits.mN = 0;
+simulationData->mData->mSampleHits.mX = NULL;
+simulationData->mData->mIsFundamentalSampleHit = false;
+simulationData->mData->mTolerances.mN = 0;
+simulationData->mData->mTolerances.mX = NULL;
+simulationData->mData->mCstateHasChanged = false;
+diagnosticManager = (NeuDiagnosticManager *)dempsystest_bjorn_DW.STATE_3_DiagMgr;
+diagnosticTree = neu_diagnostic_manager_get_initial_tree(diagnosticManager);
+tmp_3 = ne_simulator_method((NeslSimulator *)dempsystest_bjorn_DW.STATE_3_Simulator, NESL_SIM_OUTPUTS, simulationData, diagnosticManager);
+if (tmp_3 != 0) {
+    tmp_0 = error_buffer_is_empty(%<(LibGetRTModelErrorStatus())>);
+    if (tmp_0) {
+        msg = rtw_diagnostics_msg(diagnosticTree);
+        %<(LibSetRTModelErrorStatus("msg"))>;
+    }
+}
+/* {S!d64}SimscapeExecutionBlock: '<S7>/OUTPUT_3_0' */
+simulationData = (NeslSimulationData *)dempsystest_bjorn_DW.OUTPUT_3_0_SimData;
+time_6 = time_tmp;
+simulationData->mData->mTime.mN = 1;
+simulationData->mData->mTime.mX = &time_6;
+simulationData->mData->mContStates.mN = 0;
+simulationData->mData->mContStates.mX = NULL;
+simulationData->mData->mDiscStates.mN = 0;
+simulationData->mData->mDiscStates.mX = &dempsystest_bjorn_DW.OUTPUT_3_0_Discrete;
+simulationData->mData->mModeVector.mN = 0;
+simulationData->mData->mModeVector.mX = &dempsystest_bjorn_DW.OUTPUT_3_0_Modes;
+tmp_0 = %<(SLibCG_SE(SLibCGIRGetSolverFoundZcEvents()))>;
+simulationData->mData->mFoundZcEvents = tmp_0;
+simulationData->mData->mIsMajorTimeStep = tmp;
+tmp_0 = %<(SLibCG_SE(SLibCGIRGetSolverAssertCheck()))>;
+simulationData->mData->mIsSolverAssertCheck = tmp_0;
+simulationData->mData->mIsSolverCheckingCIC = false;
+simulationData->mData->mIsComputingJacobian = false;
+simulationData->mData->mIsEvaluatingF0 = false;
+simulationData->mData->mIsSolverRequestingReset = false;
+tmp_h[0] = 0;
+tmp_g[0] = dempsystest_bjorn_B.INTERNAL_6_1_1[0];
+tmp_g[1] = dempsystest_bjorn_B.INTERNAL_6_1_1[1];
+tmp_g[2] = dempsystest_bjorn_B.INTERNAL_6_1_1[2];
+tmp_g[3] = dempsystest_bjorn_B.INTERNAL_6_1_1[3];
+tmp_h[1] = 4;
+tmp_g[4] = dempsystest_bjorn_B.STATE_3[0];
+tmp_g[5] = dempsystest_bjorn_B.STATE_3[1];
+tmp_g[6] = dempsystest_bjorn_B.STATE_3[2];
+tmp_g[7] = dempsystest_bjorn_B.STATE_3[3];
+tmp_g[8] = dempsystest_bjorn_B.STATE_3[4];
+tmp_g[9] = dempsystest_bjorn_B.STATE_3[5];
+tmp_h[2] = 10;
+simulationData->mData->mInputValues.mN = 10;
+simulationData->mData->mInputValues.mX = &tmp_g[0];
+simulationData->mData->mInputOffsets.mN = 3;
+simulationData->mData->mInputOffsets.mX = &tmp_h[0];
+simulationData->mData->mOutputs.mN = 1;
+/* {S!d66}SimscapeExecutionBlock: '<S7>/OUTPUT_3_0' */
+simulationData->mData->mOutputs.mX = &dempsystest_bjorn_B.OUTPUT_3_0;
+/* {S!d68}SimscapeExecutionBlock: '<S7>/OUTPUT_3_0' */
+simulationData->mData->mSampleHits.mN = 0;
+simulationData->mData->mSampleHits.mX = NULL;
+simulationData->mData->mIsFundamentalSampleHit = false;
+simulationData->mData->mTolerances.mN = 0;
+simulationData->mData->mTolerances.mX = NULL;
+simulationData->mData->mCstateHasChanged = false;
+diagnosticManager = (NeuDiagnosticManager *)dempsystest_bjorn_DW.OUTPUT_3_0_DiagMgr;
+diagnosticTree = neu_diagnostic_manager_get_initial_tree(diagnosticManager);
+tmp_3 = ne_simulator_method((NeslSimulator *)dempsystest_bjorn_DW.OUTPUT_3_0_Simulator, NESL_SIM_OUTPUTS, simulationData, diagnosticManager);
+if (tmp_3 != 0) {
+    tmp_0 = error_buffer_is_empty(%<(LibGetRTModelErrorStatus())>);
+    if (tmp_0) {
+        msg = rtw_diagnostics_msg(diagnosticTree);
+        %<(LibSetRTModelErrorStatus("msg"))>;
+    }
+}
+/* {S!d70}SimscapeInputBlock: '<S7>/INTERNAL_5_1_1' */
+dempsystest_bjorn_B.INTERNAL_5_1_1[0] = dempsystest_bjorn_B.OUTPUT_3_0;
+dempsystest_bjorn_B.INTERNAL_5_1_1[1] = 0.0;
+dempsystest_bjorn_B.INTERNAL_5_1_1[2] = 0.0;
+dempsystest_bjorn_B.INTERNAL_5_1_1[3] = 0.0;
+/* {S!d72}SimscapeInputBlock: '<S7>/INTERNAL_8_1_1' */
+dempsystest_bjorn_B.INTERNAL_8_1_1[0] = dempsystest_bjorn_B.OUTPUT_5_0[3];
+dempsystest_bjorn_B.INTERNAL_8_1_1[1] = 0.0;
+dempsystest_bjorn_B.INTERNAL_8_1_1[2] = 0.0;
+dempsystest_bjorn_B.INTERNAL_8_1_1[3] = 0.0;
+/* {S!d74}SimscapeExecutionBlock: '<S7>/STATE_1' */
+simulationData = (NeslSimulationData *)dempsystest_bjorn_DW.STATE_1_SimData;
+time_7 = time_tmp;
+simulationData->mData->mTime.mN = 1;
+simulationData->mData->mTime.mX = &time_7;
+simulationData->mData->mContStates.mN = 1;
+simulationData->mData->mContStates.mX = &dempsystest_bjorn_X.dempsystest_bjornWheel_Rest4Har;
+simulationData->mData->mDiscStates.mN = 3;
+simulationData->mData->mDiscStates.mX = &dempsystest_bjorn_DW.STATE_1_Discrete[0];
+simulationData->mData->mModeVector.mN = 2;
+simulationData->mData->mModeVector.mX = &dempsystest_bjorn_DW.STATE_1_Modes[0];
+tmp_0 = %<(SLibCG_SE(SLibCGIRGetSolverFoundZcEvents()))>;
+simulationData->mData->mFoundZcEvents = tmp_0;
+simulationData->mData->mIsMajorTimeStep = tmp;
+tmp_0 = %<(SLibCG_SE(SLibCGIRGetSolverAssertCheck()))>;
+simulationData->mData->mIsSolverAssertCheck = tmp_0;
+simulationData->mData->mIsSolverCheckingCIC = false;
+tmp_0 = %<(SLibCG_SE(RTMIsSolverComputingJacobian()))>;
+simulationData->mData->mIsComputingJacobian = tmp_0;
+simulationData->mData->mIsEvaluatingF0 = false;
+simulationData->mData->mIsSolverRequestingReset = false;
+tmp_j[0] = 0;
+tmp_i[0] = dempsystest_bjorn_B.INTERNAL_8_1_1[0];
+tmp_i[1] = dempsystest_bjorn_B.INTERNAL_8_1_1[1];
+tmp_i[2] = dempsystest_bjorn_B.INTERNAL_8_1_1[2];
+tmp_i[3] = dempsystest_bjorn_B.INTERNAL_8_1_1[3];
+tmp_j[1] = 4;
+simulationData->mData->mInputValues.mN = 4;
+simulationData->mData->mInputValues.mX = &tmp_i[0];
+simulationData->mData->mInputOffsets.mN = 2;
+simulationData->mData->mInputOffsets.mX = &tmp_j[0];
+simulationData->mData->mOutputs.mN = 6;
+simulationData->mData->mOutputs.mX = &dempsystest_bjorn_B.STATE_1[0];
+simulationData->mData->mSampleHits.mN = 0;
+simulationData->mData->mSampleHits.mX = NULL;
+simulationData->mData->mIsFundamentalSampleHit = false;
+simulationData->mData->mTolerances.mN = 0;
+simulationData->mData->mTolerances.mX = NULL;
+simulationData->mData->mCstateHasChanged = false;
+diagnosticManager = (NeuDiagnosticManager *)dempsystest_bjorn_DW.STATE_1_DiagMgr;
+diagnosticTree = neu_diagnostic_manager_get_initial_tree(diagnosticManager);
+tmp_3 = ne_simulator_method((NeslSimulator *)dempsystest_bjorn_DW.STATE_1_Simulator, NESL_SIM_OUTPUTS, simulationData, diagnosticManager);
+if (tmp_3 != 0) {
+    tmp_0 = error_buffer_is_empty(%<(LibGetRTModelErrorStatus())>);
+    if (tmp_0) {
+        msg = rtw_diagnostics_msg(diagnosticTree);
+        %<(LibSetRTModelErrorStatus("msg"))>;
+    }
+}
+/* {S!d76}SimscapeExecutionBlock: '<S7>/OUTPUT_1_0' */
+simulationData = (NeslSimulationData *)dempsystest_bjorn_DW.OUTPUT_1_0_SimData;
+time_8 = time_tmp;
+simulationData->mData->mTime.mN = 1;
+simulationData->mData->mTime.mX = &time_8;
+simulationData->mData->mContStates.mN = 0;
+simulationData->mData->mContStates.mX = NULL;
+simulationData->mData->mDiscStates.mN = 0;
+simulationData->mData->mDiscStates.mX = &dempsystest_bjorn_DW.OUTPUT_1_0_Discrete;
+simulationData->mData->mModeVector.mN = 0;
+simulationData->mData->mModeVector.mX = &dempsystest_bjorn_DW.OUTPUT_1_0_Modes;
+tmp_0 = %<(SLibCG_SE(SLibCGIRGetSolverFoundZcEvents()))>;
+simulationData->mData->mFoundZcEvents = tmp_0;
+simulationData->mData->mIsMajorTimeStep = tmp;
+tmp = %<(SLibCG_SE(SLibCGIRGetSolverAssertCheck()))>;
+simulationData->mData->mIsSolverAssertCheck = tmp;
+simulationData->mData->mIsSolverCheckingCIC = false;
+simulationData->mData->mIsComputingJacobian = false;
+simulationData->mData->mIsEvaluatingF0 = false;
+simulationData->mData->mIsSolverRequestingReset = false;
+tmp_l[0] = 0;
+tmp_k[0] = dempsystest_bjorn_B.INTERNAL_8_1_1[0];
+tmp_k[1] = dempsystest_bjorn_B.INTERNAL_8_1_1[1];
+tmp_k[2] = dempsystest_bjorn_B.INTERNAL_8_1_1[2];
+tmp_k[3] = dempsystest_bjorn_B.INTERNAL_8_1_1[3];
+tmp_l[1] = 4;
+tmp_k[4] = dempsystest_bjorn_B.STATE_1[0];
+tmp_k[5] = dempsystest_bjorn_B.STATE_1[1];
+tmp_k[6] = dempsystest_bjorn_B.STATE_1[2];
+tmp_k[7] = dempsystest_bjorn_B.STATE_1[3];
+tmp_k[8] = dempsystest_bjorn_B.STATE_1[4];
+tmp_k[9] = dempsystest_bjorn_B.STATE_1[5];
+tmp_l[2] = 10;
+simulationData->mData->mInputValues.mN = 10;
+simulationData->mData->mInputValues.mX = &tmp_k[0];
+simulationData->mData->mInputOffsets.mN = 3;
+simulationData->mData->mInputOffsets.mX = &tmp_l[0];
+simulationData->mData->mOutputs.mN = 1;
+/* {S!d78}SimscapeExecutionBlock: '<S7>/OUTPUT_1_0' */
+simulationData->mData->mOutputs.mX = &dempsystest_bjorn_B.OUTPUT_1_0;
+/* {S!d80}SimscapeExecutionBlock: '<S7>/OUTPUT_1_0' */
+simulationData->mData->mSampleHits.mN = 0;
+simulationData->mData->mSampleHits.mX = NULL;
+simulationData->mData->mIsFundamentalSampleHit = false;
+simulationData->mData->mTolerances.mN = 0;
+simulationData->mData->mTolerances.mX = NULL;
+simulationData->mData->mCstateHasChanged = false;
+diagnosticManager = (NeuDiagnosticManager *)dempsystest_bjorn_DW.OUTPUT_1_0_DiagMgr;
+diagnosticTree = neu_diagnostic_manager_get_initial_tree(diagnosticManager);
+tmp_3 = ne_simulator_method((NeslSimulator *)dempsystest_bjorn_DW.OUTPUT_1_0_Simulator, NESL_SIM_OUTPUTS, simulationData, diagnosticManager);
+if (tmp_3 != 0) {
+    tmp = error_buffer_is_empty(%<(LibGetRTModelErrorStatus())>);
+    if (tmp) {
+        msg = rtw_diagnostics_msg(diagnosticTree);
+        %<(LibSetRTModelErrorStatus("msg"))>;
+    }
+}
+/* {S!d82}SimscapeInputBlock: '<S7>/INTERNAL_7_1_1' */
+dempsystest_bjorn_B.INTERNAL_7_1_1[0] = dempsystest_bjorn_B.OUTPUT_1_0;
+dempsystest_bjorn_B.INTERNAL_7_1_1[1] = 0.0;
+dempsystest_bjorn_B.INTERNAL_7_1_1[2] = 0.0;
+dempsystest_bjorn_B.INTERNAL_7_1_1[3] = 0.0;
+%<SLibInsertSolverResetCode()>\
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Outputs(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 2, fcnProtoType)>
+%endfunction

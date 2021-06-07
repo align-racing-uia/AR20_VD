@@ -1,0 +1,67 @@
+%implements s0_b0_nx5di_Terminate "C"
+
+%function Terminate(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+/* Terminate for SimscapeExecutionBlock: '<S7>/STATE_5' */
+neu_destroy_diagnostic_manager((NeuDiagnosticManager *)dempsystest_bjorn_DW.STATE_5_DiagMgr);
+nesl_destroy_simulation_data((NeslSimulationData *)dempsystest_bjorn_DW.STATE_5_SimData);
+nesl_erase_simulator("dempsystest_bjorn/Solver Configuration_5");
+nesl_destroy_registry();
+/* Terminate for SimscapeExecutionBlock: '<S7>/OUTPUT_5_0' */
+neu_destroy_diagnostic_manager((NeuDiagnosticManager *)dempsystest_bjorn_DW.OUTPUT_5_0_DiagMgr);
+nesl_destroy_simulation_data((NeslSimulationData *)dempsystest_bjorn_DW.OUTPUT_5_0_SimData);
+nesl_erase_simulator("dempsystest_bjorn/Solver Configuration_5");
+nesl_destroy_registry();
+/* Terminate for SimscapeExecutionBlock: '<S7>/STATE_4' */
+neu_destroy_diagnostic_manager((NeuDiagnosticManager *)dempsystest_bjorn_DW.STATE_4_DiagMgr);
+nesl_destroy_simulation_data((NeslSimulationData *)dempsystest_bjorn_DW.STATE_4_SimData);
+nesl_erase_simulator("dempsystest_bjorn/Solver Configuration_4");
+nesl_destroy_registry();
+/* Terminate for SimscapeExecutionBlock: '<S7>/OUTPUT_4_0' */
+neu_destroy_diagnostic_manager((NeuDiagnosticManager *)dempsystest_bjorn_DW.OUTPUT_4_0_DiagMgr);
+nesl_destroy_simulation_data((NeslSimulationData *)dempsystest_bjorn_DW.OUTPUT_4_0_SimData);
+nesl_erase_simulator("dempsystest_bjorn/Solver Configuration_4");
+nesl_destroy_registry();
+/* Terminate for SimscapeExecutionBlock: '<S7>/STATE_2' */
+neu_destroy_diagnostic_manager((NeuDiagnosticManager *)dempsystest_bjorn_DW.STATE_2_DiagMgr);
+nesl_destroy_simulation_data((NeslSimulationData *)dempsystest_bjorn_DW.STATE_2_SimData);
+nesl_erase_simulator("dempsystest_bjorn/Solver Configuration_2");
+nesl_destroy_registry();
+/* Terminate for SimscapeExecutionBlock: '<S7>/OUTPUT_2_0' */
+neu_destroy_diagnostic_manager((NeuDiagnosticManager *)dempsystest_bjorn_DW.OUTPUT_2_0_DiagMgr);
+nesl_destroy_simulation_data((NeslSimulationData *)dempsystest_bjorn_DW.OUTPUT_2_0_SimData);
+nesl_erase_simulator("dempsystest_bjorn/Solver Configuration_2");
+nesl_destroy_registry();
+/* Terminate for SimscapeExecutionBlock: '<S7>/STATE_3' */
+neu_destroy_diagnostic_manager((NeuDiagnosticManager *)dempsystest_bjorn_DW.STATE_3_DiagMgr);
+nesl_destroy_simulation_data((NeslSimulationData *)dempsystest_bjorn_DW.STATE_3_SimData);
+nesl_erase_simulator("dempsystest_bjorn/Solver Configuration_3");
+nesl_destroy_registry();
+/* Terminate for SimscapeExecutionBlock: '<S7>/OUTPUT_3_0' */
+neu_destroy_diagnostic_manager((NeuDiagnosticManager *)dempsystest_bjorn_DW.OUTPUT_3_0_DiagMgr);
+nesl_destroy_simulation_data((NeslSimulationData *)dempsystest_bjorn_DW.OUTPUT_3_0_SimData);
+nesl_erase_simulator("dempsystest_bjorn/Solver Configuration_3");
+nesl_destroy_registry();
+/* Terminate for SimscapeExecutionBlock: '<S7>/STATE_1' */
+neu_destroy_diagnostic_manager((NeuDiagnosticManager *)dempsystest_bjorn_DW.STATE_1_DiagMgr);
+nesl_destroy_simulation_data((NeslSimulationData *)dempsystest_bjorn_DW.STATE_1_SimData);
+nesl_erase_simulator("dempsystest_bjorn/Solver Configuration_1");
+nesl_destroy_registry();
+/* Terminate for SimscapeExecutionBlock: '<S7>/OUTPUT_1_0' */
+neu_destroy_diagnostic_manager((NeuDiagnosticManager *)dempsystest_bjorn_DW.OUTPUT_1_0_DiagMgr);
+nesl_destroy_simulation_data((NeslSimulationData *)dempsystest_bjorn_DW.OUTPUT_1_0_SimData);
+nesl_erase_simulator("dempsystest_bjorn/Solver Configuration_1");
+nesl_destroy_registry();
+%closefile cfgTxt
+%<cfgTxt>
+%endfunction
+%function TerminateFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Terminate(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 7, fcnProtoType)>
+%endfunction

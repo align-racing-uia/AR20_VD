@@ -1,0 +1,81 @@
+%implements s0_b0_nx5di_SystemInitialize "C"
+
+%function SystemInitialize(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+char *tmp_1;
+int_T tmp_0;
+boolean_T tmp;
+%closefile localVarDecl
+%<SLibInsertAsyncTaskInitializeCode(system)>
+%<SLibWriteMachineInitialize()>
+/* {S!d22}InitializeConditions for SimscapeExecutionBlock: '<S7>/STATE_5' */
+tmp = %<(SLibCG_SE(SLibCGIRIsModeReferenceForASimstructBasedTarget()))>;
+if (tmp) {
+    tmp_0 = strcmp("ode3", %<(RTMSolverGet("SolverName"))>);
+    if (tmp_0 != 0) {
+        tmp_1 = solver_mismatch_message("ode3", %<(RTMSolverGet("SolverName"))>);
+        %<(LibSetRTModelErrorStatus("tmp_1"))>;
+    }
+}
+/* {E!d22}End of InitializeConditions for SimscapeExecutionBlock: '<S7>/STATE_5' */
+
+/* {S!d24}InitializeConditions for SimscapeExecutionBlock: '<S7>/STATE_4' */
+tmp = %<(SLibCG_SE(SLibCGIRIsModeReferenceForASimstructBasedTarget()))>;
+if (tmp) {
+    tmp_0 = strcmp("ode3", %<(RTMSolverGet("SolverName"))>);
+    if (tmp_0 != 0) {
+        tmp_1 = solver_mismatch_message("ode3", %<(RTMSolverGet("SolverName"))>);
+        %<(LibSetRTModelErrorStatus("tmp_1"))>;
+    }
+}
+/* {E!d24}End of InitializeConditions for SimscapeExecutionBlock: '<S7>/STATE_4' */
+
+/* {S!d26}InitializeConditions for SimscapeExecutionBlock: '<S7>/STATE_2' */
+tmp = %<(SLibCG_SE(SLibCGIRIsModeReferenceForASimstructBasedTarget()))>;
+if (tmp) {
+    tmp_0 = strcmp("ode3", %<(RTMSolverGet("SolverName"))>);
+    if (tmp_0 != 0) {
+        tmp_1 = solver_mismatch_message("ode3", %<(RTMSolverGet("SolverName"))>);
+        %<(LibSetRTModelErrorStatus("tmp_1"))>;
+    }
+}
+/* {E!d26}End of InitializeConditions for SimscapeExecutionBlock: '<S7>/STATE_2' */
+
+/* {S!d28}InitializeConditions for SimscapeExecutionBlock: '<S7>/STATE_3' */
+tmp = %<(SLibCG_SE(SLibCGIRIsModeReferenceForASimstructBasedTarget()))>;
+if (tmp) {
+    tmp_0 = strcmp("ode3", %<(RTMSolverGet("SolverName"))>);
+    if (tmp_0 != 0) {
+        tmp_1 = solver_mismatch_message("ode3", %<(RTMSolverGet("SolverName"))>);
+        %<(LibSetRTModelErrorStatus("tmp_1"))>;
+    }
+}
+/* {E!d28}End of InitializeConditions for SimscapeExecutionBlock: '<S7>/STATE_3' */
+
+/* {S!d30}InitializeConditions for SimscapeExecutionBlock: '<S7>/STATE_1' */
+tmp = %<(SLibCG_SE(SLibCGIRIsModeReferenceForASimstructBasedTarget()))>;
+if (tmp) {
+    tmp_0 = strcmp("ode3", %<(RTMSolverGet("SolverName"))>);
+    if (tmp_0 != 0) {
+        tmp_1 = solver_mismatch_message("ode3", %<(RTMSolverGet("SolverName"))>);
+        %<(LibSetRTModelErrorStatus("tmp_1"))>;
+    }
+}
+/* {E!d30}End of InitializeConditions for SimscapeExecutionBlock: '<S7>/STATE_1' */
+%<SLibInsertInitPeriodicCStatesFcn(system)>
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedSystemInitializeLocalVars", localVarDecl)>
+%endfunction
+%function SystemInitializeFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void SystemInitialize(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 1, fcnProtoType)>
+%endfunction

@@ -1,0 +1,488 @@
+%implements s0_b0_nx5di_Start "C"
+
+%function Start(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+NeModelParameters modelParameters;
+NeModelParameters modelParameters_0;
+NeModelParameters modelParameters_1;
+NeModelParameters modelParameters_2;
+NeModelParameters modelParameters_3;
+NeModelParameters modelParameters_4;
+NeModelParameters modelParameters_5;
+NeModelParameters modelParameters_6;
+NeModelParameters modelParameters_7;
+NeModelParameters modelParameters_8;
+NeslSimulationData *tmp_1;
+NeslSimulator *tmp;
+NeuDiagnosticManager *diagnosticManager;
+NeuDiagnosticTree *diagnosticTree;
+char *msg;
+real_T tmp_2;
+int32_T tmp_3;
+boolean_T tmp_0;
+%closefile localVarDecl
+/* {S!d2}Start for SimscapeExecutionBlock: '<S7>/STATE_5' */
+tmp = nesl_lease_simulator("dempsystest_bjorn/Solver Configuration_5", 0, 0);
+dempsystest_bjorn_DW.STATE_5_Simulator = (void *)tmp;
+tmp_0 = pointer_is_null(dempsystest_bjorn_DW.STATE_5_Simulator);
+if (tmp_0) {
+    dempsystest_bjorn_59d2bdba_5_gateway();
+    tmp = nesl_lease_simulator("dempsystest_bjorn/Solver Configuration_5", 0, 0);
+    dempsystest_bjorn_DW.STATE_5_Simulator = (void *)tmp;
+}
+tmp_1 = nesl_create_simulation_data();
+dempsystest_bjorn_DW.STATE_5_SimData = (void *)tmp_1;
+diagnosticManager = rtw_create_diagnostics();
+dempsystest_bjorn_DW.STATE_5_DiagMgr = (void *)diagnosticManager;
+modelParameters.mSolverType = NE_SOLVER_TYPE_DAE;
+modelParameters.mSolverTolerance = 0.001;
+modelParameters.mVariableStepSolver = false;
+modelParameters.mIsUsingODEN = false;
+modelParameters.mFixedStepSize = 0.001;
+modelParameters.mStartTime = 0.0;
+modelParameters.mLoadInitialState = false;
+modelParameters.mUseSimState = false;
+modelParameters.mLinTrimCompile = false;
+modelParameters.mLoggingMode = SSC_LOGGING_NONE;
+modelParameters.mRTWModifiedTimeStamp = 5.44977863E+8;
+tmp_2 = %<(SLibCG_SE(SLibCGIRGetVarStepSolverPropertyValue("RelTol", "0.001")))>;
+modelParameters.mSolverTolerance = tmp_2;
+tmp_2 = %<(SLibCG_SE(SLibCGIRGetFixStepSolverPropertyValue("FixedStep", "0.0")))>;
+modelParameters.mFixedStepSize = tmp_2;
+tmp_0 = %<(SLibCG_SE(SLibCGIRHasCompiledModelPropertyValue("SolverType", "VariableStep")))>;
+modelParameters.mVariableStepSolver = tmp_0;
+tmp_0 = %<(SLibCG_SE(SLibCGIRHasCompiledModelPropertyValue("Solver", "odeN")))>;
+modelParameters.mIsUsingODEN = tmp_0;
+modelParameters.mLoadInitialState = false;
+diagnosticManager = (NeuDiagnosticManager *)dempsystest_bjorn_DW.STATE_5_DiagMgr;
+diagnosticTree = neu_diagnostic_manager_get_initial_tree(diagnosticManager);
+tmp_3 = nesl_initialize_simulator((NeslSimulator *)dempsystest_bjorn_DW.STATE_5_Simulator, &modelParameters, diagnosticManager);
+if (tmp_3 != 0) {
+    tmp_0 = error_buffer_is_empty(%<(LibGetRTModelErrorStatus())>);
+    if (tmp_0) {
+        msg = rtw_diagnostics_msg(diagnosticTree);
+        %<(LibSetRTModelErrorStatus("msg"))>;
+    }
+}
+/* {E!d2}End of Start for SimscapeExecutionBlock: '<S7>/STATE_5' */
+
+/* {S!d4}Start for SimscapeExecutionBlock: '<S7>/OUTPUT_5_0' */
+tmp = nesl_lease_simulator("dempsystest_bjorn/Solver Configuration_5", 1, 0);
+dempsystest_bjorn_DW.OUTPUT_5_0_Simulator = (void *)tmp;
+tmp_0 = pointer_is_null(dempsystest_bjorn_DW.OUTPUT_5_0_Simulator);
+if (tmp_0) {
+    dempsystest_bjorn_59d2bdba_5_gateway();
+    tmp = nesl_lease_simulator("dempsystest_bjorn/Solver Configuration_5", 1, 0);
+    dempsystest_bjorn_DW.OUTPUT_5_0_Simulator = (void *)tmp;
+}
+tmp_1 = nesl_create_simulation_data();
+dempsystest_bjorn_DW.OUTPUT_5_0_SimData = (void *)tmp_1;
+diagnosticManager = rtw_create_diagnostics();
+dempsystest_bjorn_DW.OUTPUT_5_0_DiagMgr = (void *)diagnosticManager;
+modelParameters_0.mSolverType = NE_SOLVER_TYPE_DAE;
+modelParameters_0.mSolverTolerance = 0.001;
+modelParameters_0.mVariableStepSolver = false;
+modelParameters_0.mIsUsingODEN = false;
+modelParameters_0.mFixedStepSize = 0.001;
+modelParameters_0.mStartTime = 0.0;
+modelParameters_0.mLoadInitialState = false;
+modelParameters_0.mUseSimState = false;
+modelParameters_0.mLinTrimCompile = false;
+modelParameters_0.mLoggingMode = SSC_LOGGING_NONE;
+modelParameters_0.mRTWModifiedTimeStamp = 5.44977863E+8;
+tmp_2 = %<(SLibCG_SE(SLibCGIRGetVarStepSolverPropertyValue("RelTol", "0.001")))>;
+modelParameters_0.mSolverTolerance = tmp_2;
+tmp_2 = %<(SLibCG_SE(SLibCGIRGetFixStepSolverPropertyValue("FixedStep", "0.0")))>;
+modelParameters_0.mFixedStepSize = tmp_2;
+tmp_0 = %<(SLibCG_SE(SLibCGIRHasCompiledModelPropertyValue("SolverType", "VariableStep")))>;
+modelParameters_0.mVariableStepSolver = tmp_0;
+tmp_0 = %<(SLibCG_SE(SLibCGIRHasCompiledModelPropertyValue("Solver", "odeN")))>;
+modelParameters_0.mIsUsingODEN = tmp_0;
+modelParameters_0.mLoadInitialState = false;
+diagnosticManager = (NeuDiagnosticManager *)dempsystest_bjorn_DW.OUTPUT_5_0_DiagMgr;
+diagnosticTree = neu_diagnostic_manager_get_initial_tree(diagnosticManager);
+tmp_3 = nesl_initialize_simulator((NeslSimulator *)dempsystest_bjorn_DW.OUTPUT_5_0_Simulator, &modelParameters_0, diagnosticManager);
+if (tmp_3 != 0) {
+    tmp_0 = error_buffer_is_empty(%<(LibGetRTModelErrorStatus())>);
+    if (tmp_0) {
+        msg = rtw_diagnostics_msg(diagnosticTree);
+        %<(LibSetRTModelErrorStatus("msg"))>;
+    }
+}
+/* {E!d4}End of Start for SimscapeExecutionBlock: '<S7>/OUTPUT_5_0' */
+
+/* {S!d6}Start for SimscapeExecutionBlock: '<S7>/STATE_4' */
+tmp = nesl_lease_simulator("dempsystest_bjorn/Solver Configuration_4", 0, 0);
+dempsystest_bjorn_DW.STATE_4_Simulator = (void *)tmp;
+tmp_0 = pointer_is_null(dempsystest_bjorn_DW.STATE_4_Simulator);
+if (tmp_0) {
+    dempsystest_bjorn_59d2bdba_4_gateway();
+    tmp = nesl_lease_simulator("dempsystest_bjorn/Solver Configuration_4", 0, 0);
+    dempsystest_bjorn_DW.STATE_4_Simulator = (void *)tmp;
+}
+tmp_1 = nesl_create_simulation_data();
+dempsystest_bjorn_DW.STATE_4_SimData = (void *)tmp_1;
+diagnosticManager = rtw_create_diagnostics();
+dempsystest_bjorn_DW.STATE_4_DiagMgr = (void *)diagnosticManager;
+modelParameters_1.mSolverType = NE_SOLVER_TYPE_DAE;
+modelParameters_1.mSolverTolerance = 0.001;
+modelParameters_1.mVariableStepSolver = false;
+modelParameters_1.mIsUsingODEN = false;
+modelParameters_1.mFixedStepSize = 0.001;
+modelParameters_1.mStartTime = 0.0;
+modelParameters_1.mLoadInitialState = false;
+modelParameters_1.mUseSimState = false;
+modelParameters_1.mLinTrimCompile = false;
+modelParameters_1.mLoggingMode = SSC_LOGGING_NONE;
+modelParameters_1.mRTWModifiedTimeStamp = 5.44977803E+8;
+tmp_2 = %<(SLibCG_SE(SLibCGIRGetVarStepSolverPropertyValue("RelTol", "0.001")))>;
+modelParameters_1.mSolverTolerance = tmp_2;
+tmp_2 = %<(SLibCG_SE(SLibCGIRGetFixStepSolverPropertyValue("FixedStep", "0.0")))>;
+modelParameters_1.mFixedStepSize = tmp_2;
+tmp_0 = %<(SLibCG_SE(SLibCGIRHasCompiledModelPropertyValue("SolverType", "VariableStep")))>;
+modelParameters_1.mVariableStepSolver = tmp_0;
+tmp_0 = %<(SLibCG_SE(SLibCGIRHasCompiledModelPropertyValue("Solver", "odeN")))>;
+modelParameters_1.mIsUsingODEN = tmp_0;
+modelParameters_1.mLoadInitialState = false;
+diagnosticManager = (NeuDiagnosticManager *)dempsystest_bjorn_DW.STATE_4_DiagMgr;
+diagnosticTree = neu_diagnostic_manager_get_initial_tree(diagnosticManager);
+tmp_3 = nesl_initialize_simulator((NeslSimulator *)dempsystest_bjorn_DW.STATE_4_Simulator, &modelParameters_1, diagnosticManager);
+if (tmp_3 != 0) {
+    tmp_0 = error_buffer_is_empty(%<(LibGetRTModelErrorStatus())>);
+    if (tmp_0) {
+        msg = rtw_diagnostics_msg(diagnosticTree);
+        %<(LibSetRTModelErrorStatus("msg"))>;
+    }
+}
+/* {E!d6}End of Start for SimscapeExecutionBlock: '<S7>/STATE_4' */
+
+/* {S!d8}Start for SimscapeExecutionBlock: '<S7>/OUTPUT_4_0' */
+tmp = nesl_lease_simulator("dempsystest_bjorn/Solver Configuration_4", 1, 0);
+dempsystest_bjorn_DW.OUTPUT_4_0_Simulator = (void *)tmp;
+tmp_0 = pointer_is_null(dempsystest_bjorn_DW.OUTPUT_4_0_Simulator);
+if (tmp_0) {
+    dempsystest_bjorn_59d2bdba_4_gateway();
+    tmp = nesl_lease_simulator("dempsystest_bjorn/Solver Configuration_4", 1, 0);
+    dempsystest_bjorn_DW.OUTPUT_4_0_Simulator = (void *)tmp;
+}
+tmp_1 = nesl_create_simulation_data();
+dempsystest_bjorn_DW.OUTPUT_4_0_SimData = (void *)tmp_1;
+diagnosticManager = rtw_create_diagnostics();
+dempsystest_bjorn_DW.OUTPUT_4_0_DiagMgr = (void *)diagnosticManager;
+modelParameters_2.mSolverType = NE_SOLVER_TYPE_DAE;
+modelParameters_2.mSolverTolerance = 0.001;
+modelParameters_2.mVariableStepSolver = false;
+modelParameters_2.mIsUsingODEN = false;
+modelParameters_2.mFixedStepSize = 0.001;
+modelParameters_2.mStartTime = 0.0;
+modelParameters_2.mLoadInitialState = false;
+modelParameters_2.mUseSimState = false;
+modelParameters_2.mLinTrimCompile = false;
+modelParameters_2.mLoggingMode = SSC_LOGGING_NONE;
+modelParameters_2.mRTWModifiedTimeStamp = 5.44977803E+8;
+tmp_2 = %<(SLibCG_SE(SLibCGIRGetVarStepSolverPropertyValue("RelTol", "0.001")))>;
+modelParameters_2.mSolverTolerance = tmp_2;
+tmp_2 = %<(SLibCG_SE(SLibCGIRGetFixStepSolverPropertyValue("FixedStep", "0.0")))>;
+modelParameters_2.mFixedStepSize = tmp_2;
+tmp_0 = %<(SLibCG_SE(SLibCGIRHasCompiledModelPropertyValue("SolverType", "VariableStep")))>;
+modelParameters_2.mVariableStepSolver = tmp_0;
+tmp_0 = %<(SLibCG_SE(SLibCGIRHasCompiledModelPropertyValue("Solver", "odeN")))>;
+modelParameters_2.mIsUsingODEN = tmp_0;
+modelParameters_2.mLoadInitialState = false;
+diagnosticManager = (NeuDiagnosticManager *)dempsystest_bjorn_DW.OUTPUT_4_0_DiagMgr;
+diagnosticTree = neu_diagnostic_manager_get_initial_tree(diagnosticManager);
+tmp_3 = nesl_initialize_simulator((NeslSimulator *)dempsystest_bjorn_DW.OUTPUT_4_0_Simulator, &modelParameters_2, diagnosticManager);
+if (tmp_3 != 0) {
+    tmp_0 = error_buffer_is_empty(%<(LibGetRTModelErrorStatus())>);
+    if (tmp_0) {
+        msg = rtw_diagnostics_msg(diagnosticTree);
+        %<(LibSetRTModelErrorStatus("msg"))>;
+    }
+}
+/* {E!d8}End of Start for SimscapeExecutionBlock: '<S7>/OUTPUT_4_0' */
+
+/* {S!d10}Start for SimscapeExecutionBlock: '<S7>/STATE_2' */
+tmp = nesl_lease_simulator("dempsystest_bjorn/Solver Configuration_2", 0, 0);
+dempsystest_bjorn_DW.STATE_2_Simulator = (void *)tmp;
+tmp_0 = pointer_is_null(dempsystest_bjorn_DW.STATE_2_Simulator);
+if (tmp_0) {
+    dempsystest_bjorn_59d2bdba_2_gateway();
+    tmp = nesl_lease_simulator("dempsystest_bjorn/Solver Configuration_2", 0, 0);
+    dempsystest_bjorn_DW.STATE_2_Simulator = (void *)tmp;
+}
+tmp_1 = nesl_create_simulation_data();
+dempsystest_bjorn_DW.STATE_2_SimData = (void *)tmp_1;
+diagnosticManager = rtw_create_diagnostics();
+dempsystest_bjorn_DW.STATE_2_DiagMgr = (void *)diagnosticManager;
+modelParameters_3.mSolverType = NE_SOLVER_TYPE_DAE;
+modelParameters_3.mSolverTolerance = 0.001;
+modelParameters_3.mVariableStepSolver = false;
+modelParameters_3.mIsUsingODEN = false;
+modelParameters_3.mFixedStepSize = 0.001;
+modelParameters_3.mStartTime = 0.0;
+modelParameters_3.mLoadInitialState = false;
+modelParameters_3.mUseSimState = false;
+modelParameters_3.mLinTrimCompile = false;
+modelParameters_3.mLoggingMode = SSC_LOGGING_NONE;
+modelParameters_3.mRTWModifiedTimeStamp = 5.44977803E+8;
+tmp_2 = %<(SLibCG_SE(SLibCGIRGetVarStepSolverPropertyValue("RelTol", "0.001")))>;
+modelParameters_3.mSolverTolerance = tmp_2;
+tmp_2 = %<(SLibCG_SE(SLibCGIRGetFixStepSolverPropertyValue("FixedStep", "0.0")))>;
+modelParameters_3.mFixedStepSize = tmp_2;
+tmp_0 = %<(SLibCG_SE(SLibCGIRHasCompiledModelPropertyValue("SolverType", "VariableStep")))>;
+modelParameters_3.mVariableStepSolver = tmp_0;
+tmp_0 = %<(SLibCG_SE(SLibCGIRHasCompiledModelPropertyValue("Solver", "odeN")))>;
+modelParameters_3.mIsUsingODEN = tmp_0;
+modelParameters_3.mLoadInitialState = false;
+diagnosticManager = (NeuDiagnosticManager *)dempsystest_bjorn_DW.STATE_2_DiagMgr;
+diagnosticTree = neu_diagnostic_manager_get_initial_tree(diagnosticManager);
+tmp_3 = nesl_initialize_simulator((NeslSimulator *)dempsystest_bjorn_DW.STATE_2_Simulator, &modelParameters_3, diagnosticManager);
+if (tmp_3 != 0) {
+    tmp_0 = error_buffer_is_empty(%<(LibGetRTModelErrorStatus())>);
+    if (tmp_0) {
+        msg = rtw_diagnostics_msg(diagnosticTree);
+        %<(LibSetRTModelErrorStatus("msg"))>;
+    }
+}
+/* {E!d10}End of Start for SimscapeExecutionBlock: '<S7>/STATE_2' */
+
+/* {S!d12}Start for SimscapeExecutionBlock: '<S7>/OUTPUT_2_0' */
+tmp = nesl_lease_simulator("dempsystest_bjorn/Solver Configuration_2", 1, 0);
+dempsystest_bjorn_DW.OUTPUT_2_0_Simulator = (void *)tmp;
+tmp_0 = pointer_is_null(dempsystest_bjorn_DW.OUTPUT_2_0_Simulator);
+if (tmp_0) {
+    dempsystest_bjorn_59d2bdba_2_gateway();
+    tmp = nesl_lease_simulator("dempsystest_bjorn/Solver Configuration_2", 1, 0);
+    dempsystest_bjorn_DW.OUTPUT_2_0_Simulator = (void *)tmp;
+}
+tmp_1 = nesl_create_simulation_data();
+dempsystest_bjorn_DW.OUTPUT_2_0_SimData = (void *)tmp_1;
+diagnosticManager = rtw_create_diagnostics();
+dempsystest_bjorn_DW.OUTPUT_2_0_DiagMgr = (void *)diagnosticManager;
+modelParameters_4.mSolverType = NE_SOLVER_TYPE_DAE;
+modelParameters_4.mSolverTolerance = 0.001;
+modelParameters_4.mVariableStepSolver = false;
+modelParameters_4.mIsUsingODEN = false;
+modelParameters_4.mFixedStepSize = 0.001;
+modelParameters_4.mStartTime = 0.0;
+modelParameters_4.mLoadInitialState = false;
+modelParameters_4.mUseSimState = false;
+modelParameters_4.mLinTrimCompile = false;
+modelParameters_4.mLoggingMode = SSC_LOGGING_NONE;
+modelParameters_4.mRTWModifiedTimeStamp = 5.44977803E+8;
+tmp_2 = %<(SLibCG_SE(SLibCGIRGetVarStepSolverPropertyValue("RelTol", "0.001")))>;
+modelParameters_4.mSolverTolerance = tmp_2;
+tmp_2 = %<(SLibCG_SE(SLibCGIRGetFixStepSolverPropertyValue("FixedStep", "0.0")))>;
+modelParameters_4.mFixedStepSize = tmp_2;
+tmp_0 = %<(SLibCG_SE(SLibCGIRHasCompiledModelPropertyValue("SolverType", "VariableStep")))>;
+modelParameters_4.mVariableStepSolver = tmp_0;
+tmp_0 = %<(SLibCG_SE(SLibCGIRHasCompiledModelPropertyValue("Solver", "odeN")))>;
+modelParameters_4.mIsUsingODEN = tmp_0;
+modelParameters_4.mLoadInitialState = false;
+diagnosticManager = (NeuDiagnosticManager *)dempsystest_bjorn_DW.OUTPUT_2_0_DiagMgr;
+diagnosticTree = neu_diagnostic_manager_get_initial_tree(diagnosticManager);
+tmp_3 = nesl_initialize_simulator((NeslSimulator *)dempsystest_bjorn_DW.OUTPUT_2_0_Simulator, &modelParameters_4, diagnosticManager);
+if (tmp_3 != 0) {
+    tmp_0 = error_buffer_is_empty(%<(LibGetRTModelErrorStatus())>);
+    if (tmp_0) {
+        msg = rtw_diagnostics_msg(diagnosticTree);
+        %<(LibSetRTModelErrorStatus("msg"))>;
+    }
+}
+/* {E!d12}End of Start for SimscapeExecutionBlock: '<S7>/OUTPUT_2_0' */
+
+/* {S!d14}Start for SimscapeExecutionBlock: '<S7>/STATE_3' */
+tmp = nesl_lease_simulator("dempsystest_bjorn/Solver Configuration_3", 0, 0);
+dempsystest_bjorn_DW.STATE_3_Simulator = (void *)tmp;
+tmp_0 = pointer_is_null(dempsystest_bjorn_DW.STATE_3_Simulator);
+if (tmp_0) {
+    dempsystest_bjorn_59d2bdba_3_gateway();
+    tmp = nesl_lease_simulator("dempsystest_bjorn/Solver Configuration_3", 0, 0);
+    dempsystest_bjorn_DW.STATE_3_Simulator = (void *)tmp;
+}
+tmp_1 = nesl_create_simulation_data();
+dempsystest_bjorn_DW.STATE_3_SimData = (void *)tmp_1;
+diagnosticManager = rtw_create_diagnostics();
+dempsystest_bjorn_DW.STATE_3_DiagMgr = (void *)diagnosticManager;
+modelParameters_5.mSolverType = NE_SOLVER_TYPE_DAE;
+modelParameters_5.mSolverTolerance = 0.001;
+modelParameters_5.mVariableStepSolver = false;
+modelParameters_5.mIsUsingODEN = false;
+modelParameters_5.mFixedStepSize = 0.001;
+modelParameters_5.mStartTime = 0.0;
+modelParameters_5.mLoadInitialState = false;
+modelParameters_5.mUseSimState = false;
+modelParameters_5.mLinTrimCompile = false;
+modelParameters_5.mLoggingMode = SSC_LOGGING_NONE;
+modelParameters_5.mRTWModifiedTimeStamp = 5.44977803E+8;
+tmp_2 = %<(SLibCG_SE(SLibCGIRGetVarStepSolverPropertyValue("RelTol", "0.001")))>;
+modelParameters_5.mSolverTolerance = tmp_2;
+tmp_2 = %<(SLibCG_SE(SLibCGIRGetFixStepSolverPropertyValue("FixedStep", "0.0")))>;
+modelParameters_5.mFixedStepSize = tmp_2;
+tmp_0 = %<(SLibCG_SE(SLibCGIRHasCompiledModelPropertyValue("SolverType", "VariableStep")))>;
+modelParameters_5.mVariableStepSolver = tmp_0;
+tmp_0 = %<(SLibCG_SE(SLibCGIRHasCompiledModelPropertyValue("Solver", "odeN")))>;
+modelParameters_5.mIsUsingODEN = tmp_0;
+modelParameters_5.mLoadInitialState = false;
+diagnosticManager = (NeuDiagnosticManager *)dempsystest_bjorn_DW.STATE_3_DiagMgr;
+diagnosticTree = neu_diagnostic_manager_get_initial_tree(diagnosticManager);
+tmp_3 = nesl_initialize_simulator((NeslSimulator *)dempsystest_bjorn_DW.STATE_3_Simulator, &modelParameters_5, diagnosticManager);
+if (tmp_3 != 0) {
+    tmp_0 = error_buffer_is_empty(%<(LibGetRTModelErrorStatus())>);
+    if (tmp_0) {
+        msg = rtw_diagnostics_msg(diagnosticTree);
+        %<(LibSetRTModelErrorStatus("msg"))>;
+    }
+}
+/* {E!d14}End of Start for SimscapeExecutionBlock: '<S7>/STATE_3' */
+
+/* {S!d16}Start for SimscapeExecutionBlock: '<S7>/OUTPUT_3_0' */
+tmp = nesl_lease_simulator("dempsystest_bjorn/Solver Configuration_3", 1, 0);
+dempsystest_bjorn_DW.OUTPUT_3_0_Simulator = (void *)tmp;
+tmp_0 = pointer_is_null(dempsystest_bjorn_DW.OUTPUT_3_0_Simulator);
+if (tmp_0) {
+    dempsystest_bjorn_59d2bdba_3_gateway();
+    tmp = nesl_lease_simulator("dempsystest_bjorn/Solver Configuration_3", 1, 0);
+    dempsystest_bjorn_DW.OUTPUT_3_0_Simulator = (void *)tmp;
+}
+tmp_1 = nesl_create_simulation_data();
+dempsystest_bjorn_DW.OUTPUT_3_0_SimData = (void *)tmp_1;
+diagnosticManager = rtw_create_diagnostics();
+dempsystest_bjorn_DW.OUTPUT_3_0_DiagMgr = (void *)diagnosticManager;
+modelParameters_6.mSolverType = NE_SOLVER_TYPE_DAE;
+modelParameters_6.mSolverTolerance = 0.001;
+modelParameters_6.mVariableStepSolver = false;
+modelParameters_6.mIsUsingODEN = false;
+modelParameters_6.mFixedStepSize = 0.001;
+modelParameters_6.mStartTime = 0.0;
+modelParameters_6.mLoadInitialState = false;
+modelParameters_6.mUseSimState = false;
+modelParameters_6.mLinTrimCompile = false;
+modelParameters_6.mLoggingMode = SSC_LOGGING_NONE;
+modelParameters_6.mRTWModifiedTimeStamp = 5.44977803E+8;
+tmp_2 = %<(SLibCG_SE(SLibCGIRGetVarStepSolverPropertyValue("RelTol", "0.001")))>;
+modelParameters_6.mSolverTolerance = tmp_2;
+tmp_2 = %<(SLibCG_SE(SLibCGIRGetFixStepSolverPropertyValue("FixedStep", "0.0")))>;
+modelParameters_6.mFixedStepSize = tmp_2;
+tmp_0 = %<(SLibCG_SE(SLibCGIRHasCompiledModelPropertyValue("SolverType", "VariableStep")))>;
+modelParameters_6.mVariableStepSolver = tmp_0;
+tmp_0 = %<(SLibCG_SE(SLibCGIRHasCompiledModelPropertyValue("Solver", "odeN")))>;
+modelParameters_6.mIsUsingODEN = tmp_0;
+modelParameters_6.mLoadInitialState = false;
+diagnosticManager = (NeuDiagnosticManager *)dempsystest_bjorn_DW.OUTPUT_3_0_DiagMgr;
+diagnosticTree = neu_diagnostic_manager_get_initial_tree(diagnosticManager);
+tmp_3 = nesl_initialize_simulator((NeslSimulator *)dempsystest_bjorn_DW.OUTPUT_3_0_Simulator, &modelParameters_6, diagnosticManager);
+if (tmp_3 != 0) {
+    tmp_0 = error_buffer_is_empty(%<(LibGetRTModelErrorStatus())>);
+    if (tmp_0) {
+        msg = rtw_diagnostics_msg(diagnosticTree);
+        %<(LibSetRTModelErrorStatus("msg"))>;
+    }
+}
+/* {E!d16}End of Start for SimscapeExecutionBlock: '<S7>/OUTPUT_3_0' */
+
+/* {S!d18}Start for SimscapeExecutionBlock: '<S7>/STATE_1' */
+tmp = nesl_lease_simulator("dempsystest_bjorn/Solver Configuration_1", 0, 0);
+dempsystest_bjorn_DW.STATE_1_Simulator = (void *)tmp;
+tmp_0 = pointer_is_null(dempsystest_bjorn_DW.STATE_1_Simulator);
+if (tmp_0) {
+    dempsystest_bjorn_59d2bdba_1_gateway();
+    tmp = nesl_lease_simulator("dempsystest_bjorn/Solver Configuration_1", 0, 0);
+    dempsystest_bjorn_DW.STATE_1_Simulator = (void *)tmp;
+}
+tmp_1 = nesl_create_simulation_data();
+dempsystest_bjorn_DW.STATE_1_SimData = (void *)tmp_1;
+diagnosticManager = rtw_create_diagnostics();
+dempsystest_bjorn_DW.STATE_1_DiagMgr = (void *)diagnosticManager;
+modelParameters_7.mSolverType = NE_SOLVER_TYPE_DAE;
+modelParameters_7.mSolverTolerance = 0.001;
+modelParameters_7.mVariableStepSolver = false;
+modelParameters_7.mIsUsingODEN = false;
+modelParameters_7.mFixedStepSize = 0.001;
+modelParameters_7.mStartTime = 0.0;
+modelParameters_7.mLoadInitialState = false;
+modelParameters_7.mUseSimState = false;
+modelParameters_7.mLinTrimCompile = false;
+modelParameters_7.mLoggingMode = SSC_LOGGING_NONE;
+modelParameters_7.mRTWModifiedTimeStamp = 5.44977803E+8;
+tmp_2 = %<(SLibCG_SE(SLibCGIRGetVarStepSolverPropertyValue("RelTol", "0.001")))>;
+modelParameters_7.mSolverTolerance = tmp_2;
+tmp_2 = %<(SLibCG_SE(SLibCGIRGetFixStepSolverPropertyValue("FixedStep", "0.0")))>;
+modelParameters_7.mFixedStepSize = tmp_2;
+tmp_0 = %<(SLibCG_SE(SLibCGIRHasCompiledModelPropertyValue("SolverType", "VariableStep")))>;
+modelParameters_7.mVariableStepSolver = tmp_0;
+tmp_0 = %<(SLibCG_SE(SLibCGIRHasCompiledModelPropertyValue("Solver", "odeN")))>;
+modelParameters_7.mIsUsingODEN = tmp_0;
+modelParameters_7.mLoadInitialState = false;
+diagnosticManager = (NeuDiagnosticManager *)dempsystest_bjorn_DW.STATE_1_DiagMgr;
+diagnosticTree = neu_diagnostic_manager_get_initial_tree(diagnosticManager);
+tmp_3 = nesl_initialize_simulator((NeslSimulator *)dempsystest_bjorn_DW.STATE_1_Simulator, &modelParameters_7, diagnosticManager);
+if (tmp_3 != 0) {
+    tmp_0 = error_buffer_is_empty(%<(LibGetRTModelErrorStatus())>);
+    if (tmp_0) {
+        msg = rtw_diagnostics_msg(diagnosticTree);
+        %<(LibSetRTModelErrorStatus("msg"))>;
+    }
+}
+/* {E!d18}End of Start for SimscapeExecutionBlock: '<S7>/STATE_1' */
+
+/* {S!d20}Start for SimscapeExecutionBlock: '<S7>/OUTPUT_1_0' */
+tmp = nesl_lease_simulator("dempsystest_bjorn/Solver Configuration_1", 1, 0);
+dempsystest_bjorn_DW.OUTPUT_1_0_Simulator = (void *)tmp;
+tmp_0 = pointer_is_null(dempsystest_bjorn_DW.OUTPUT_1_0_Simulator);
+if (tmp_0) {
+    dempsystest_bjorn_59d2bdba_1_gateway();
+    tmp = nesl_lease_simulator("dempsystest_bjorn/Solver Configuration_1", 1, 0);
+    dempsystest_bjorn_DW.OUTPUT_1_0_Simulator = (void *)tmp;
+}
+tmp_1 = nesl_create_simulation_data();
+dempsystest_bjorn_DW.OUTPUT_1_0_SimData = (void *)tmp_1;
+diagnosticManager = rtw_create_diagnostics();
+dempsystest_bjorn_DW.OUTPUT_1_0_DiagMgr = (void *)diagnosticManager;
+modelParameters_8.mSolverType = NE_SOLVER_TYPE_DAE;
+modelParameters_8.mSolverTolerance = 0.001;
+modelParameters_8.mVariableStepSolver = false;
+modelParameters_8.mIsUsingODEN = false;
+modelParameters_8.mFixedStepSize = 0.001;
+modelParameters_8.mStartTime = 0.0;
+modelParameters_8.mLoadInitialState = false;
+modelParameters_8.mUseSimState = false;
+modelParameters_8.mLinTrimCompile = false;
+modelParameters_8.mLoggingMode = SSC_LOGGING_NONE;
+modelParameters_8.mRTWModifiedTimeStamp = 5.44977803E+8;
+tmp_2 = %<(SLibCG_SE(SLibCGIRGetVarStepSolverPropertyValue("RelTol", "0.001")))>;
+modelParameters_8.mSolverTolerance = tmp_2;
+tmp_2 = %<(SLibCG_SE(SLibCGIRGetFixStepSolverPropertyValue("FixedStep", "0.0")))>;
+modelParameters_8.mFixedStepSize = tmp_2;
+tmp_0 = %<(SLibCG_SE(SLibCGIRHasCompiledModelPropertyValue("SolverType", "VariableStep")))>;
+modelParameters_8.mVariableStepSolver = tmp_0;
+tmp_0 = %<(SLibCG_SE(SLibCGIRHasCompiledModelPropertyValue("Solver", "odeN")))>;
+modelParameters_8.mIsUsingODEN = tmp_0;
+modelParameters_8.mLoadInitialState = false;
+diagnosticManager = (NeuDiagnosticManager *)dempsystest_bjorn_DW.OUTPUT_1_0_DiagMgr;
+diagnosticTree = neu_diagnostic_manager_get_initial_tree(diagnosticManager);
+tmp_3 = nesl_initialize_simulator((NeslSimulator *)dempsystest_bjorn_DW.OUTPUT_1_0_Simulator, &modelParameters_8, diagnosticManager);
+if (tmp_3 != 0) {
+    tmp_0 = error_buffer_is_empty(%<(LibGetRTModelErrorStatus())>);
+    if (tmp_0) {
+        msg = rtw_diagnostics_msg(diagnosticTree);
+        %<(LibSetRTModelErrorStatus("msg"))>;
+    }
+}
+/* {E!d20}End of Start for SimscapeExecutionBlock: '<S7>/OUTPUT_1_0' */
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedStartLocalVars", localVarDecl)>
+%endfunction
+%function StartFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Start(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 0, fcnProtoType)>
+%endfunction
