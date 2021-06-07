@@ -1,4 +1,9 @@
-%Upright center midt i hullet til upright
+%Upright center i forhold til wheel center i geometri.m sitt koordinat
+%system
+UpFtykkelse = 50
+UCG = Wc_FH-[0,Uptykkelse/2,0]
+
+%Upright center midt i hullet til upright basert på lokalt koordinat system
 UC =[0, 0, 0]
 
 %Distanse fra center til indre ytre plan
